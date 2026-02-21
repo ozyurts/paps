@@ -1,91 +1,18 @@
 <!doctype html>
-<html lang="tr">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pegasus Peer Support</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="styles.css" />
+    <script>
+      (() => {
+        const saved = localStorage.getItem('lang');
+        const lang = saved === 'tr-TR' || saved === 'en-US' ? saved : 'tr-TR';
+        window.location.replace(`/${lang}/`);
+      })();
+    </script>
   </head>
   <body>
-    <header class="topbar container">
-      <a href="#" class="brand" aria-label="Pegasus Peer Support">
-        <span class="brand-mark" aria-hidden="true">✈</span>
-        <div>
-          <strong>Pegasus</strong>
-          <small>Peer Support</small>
-        </div>
-      </a>
-      <nav class="controls" aria-label="Site controls">
-        <label class="lang-select" for="languageSwitcher">
-          <span data-i18n="languageLabel">Dil</span>
-          <select id="languageSwitcher" aria-label="Language selection">
-            <option value="tr">TR</option>
-            <option value="en">EN</option>
-          </select>
-        </label>
-        <button id="themeToggle" class="theme-btn" type="button" data-theme-label="light" aria-live="polite">
-          ☀️
-        </button>
-      </nav>
-    </header>
-
-    <main>
-      <section class="hero container">
-        <div class="hero-content">
-          <p class="eyebrow" data-i18n="heroEyebrow">Pegasus İnsan Odaklı Destek</p>
-          <h1 data-i18n="heroTitle">Birlikte daha güçlü bir çalışma kültürü.</h1>
-          <p class="hero-text" data-i18n="heroDescription">
-            Pegasus Peer Support, çalışanların güvenli, empatik ve erişilebilir bir destek ağına ulaşmasını sağlar. Kurumsal sağlık, psikolojik dayanıklılık ve ekip bağlılığını tek bir deneyimde birleştirir.
-          </p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#features" data-i18n="exploreButton">Programı Keşfet</a>
-            <a class="btn btn-secondary" href="#contact" data-i18n="contactButton">İletişime Geç</a>
-          </div>
-        </div>
-        <aside class="hero-card" aria-label="Peer support quick facts">
-          <h2 data-i18n="statsTitle">Hızlı Bakış</h2>
-          <ul>
-            <li><strong data-i18n="stat1Value">7/24</strong><span data-i18n="stat1Label">Erişilebilir destek</span></li>
-            <li><strong data-i18n="stat2Value">%100</strong><span data-i18n="stat2Label">Gizlilik yaklaşımı</span></li>
-            <li><strong data-i18n="stat3Value">5+</strong><span data-i18n="stat3Label">Çok dilli iletişim seçeneği</span></li>
-          </ul>
-        </aside>
-      </section>
-
-      <section id="features" class="features container">
-        <article class="feature-card">
-          <h3 data-i18n="feature1Title">Güvenli Görüşme Alanı</h3>
-          <p data-i18n="feature1Desc">Çalışanlarınız için profesyonel standartlara uygun, güvenli ve gizlilik odaklı iletişim süreci.</p>
-        </article>
-        <article class="feature-card">
-          <h3 data-i18n="feature2Title">Uzman Eşleşmesi</h3>
-          <p data-i18n="feature2Desc">İhtiyaca göre doğru uzmanla hızlı eşleşme sağlayan akıllı yönlendirme akışı.</p>
-        </article>
-        <article class="feature-card">
-          <h3 data-i18n="feature3Title">Sürdürülebilir İyilik Hali</h3>
-          <p data-i18n="feature3Desc">Bireysel ve ekip düzeyinde iyi oluşu destekleyen ölçülebilir gelişim yaklaşımı.</p>
-        </article>
-      </section>
-
-      <section id="contact" class="contact container">
-        <div>
-          <h2 data-i18n="contactTitle">Kurumsal destek çözümlerimizi konuşalım</h2>
-          <p data-i18n="contactDesc">İhtiyacınıza uygun peer support kurgusunu birlikte tasarlayalım.</p>
-        </div>
-        <a class="btn btn-primary" href="mailto:info@pegasuspeersupport.com">info@pegasuspeersupport.com</a>
-      </section>
-    </main>
-
-    <footer class="footer container">
-      <p data-i18n="footerText">© 2026 Pegasus Peer Support. Tüm hakları saklıdır.</p>
-    </footer>
-
-    <script src="script.js"></script>
+    <p>Redirecting… <a href="/tr-TR/">TR</a> | <a href="/en-US/">EN</a></p>
   </body>
 </html>
