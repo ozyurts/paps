@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pegasus Peer Support | Pilot Support</title>
+    <script>
+      (() => {
+        const s = localStorage.getItem('theme') || 'system';
+        const d = matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.dataset.theme = s === 'system' ? (d ? 'dark' : 'light') : s;
+      })();
+    </script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body data-locale="en-US">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="container nav-shell">
+        <a class="brand" href="/en-US/"><span class="brand-mark">✈</span><span><strong>Pegasus</strong><small>Pilot Peer Support</small></span></a>
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu">☰</button>
+        <nav class="nav-menu" id="navMenu" aria-label="Main navigation">
+          <ul class="nav-links">
+            <li><a class="nav-link" href="/en-US/">Home</a></li>
+            <li><a class="nav-link" href="/en-US/program.html">Program</a></li>
+            <li><a class="nav-link" href="/en-US/resources.html">Resources</a></li>
+            <li><a class="nav-link" href="/en-US/contact.html">Contact</a></li>
+          </ul>
+          <div class="nav-controls">
+            <select id="languageSwitcher" aria-label="Language"><option value="tr-TR">TR</option><option value="en-US">EN</option></select>
+            <button class="btn btn-ghost" id="themeToggle" type="button" aria-label="Toggle theme">🖥️</button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="section">
+      <div class="container stack">
+        <section class="hero">
+          <div class="stack">
+            <span class="badge">Pilot-Centered Peer Care</span>
+            <h1>You are not alone when things feel heavy.</h1>
+            <p>
+              Pegasus Pilot Peer Support is built for Pegasus pilots who may feel overwhelmed after demanding operations,
+              personal stress, fatigue, or critical incidents.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="/en-US/program.html">See support process</a>
+              <a class="btn btn-secondary" href="/en-US/contact.html">Request support</a>
+            </div>
+          </div>
+          <aside class="card stack">
+            <h2>What this program provides</h2>
+            <span class="chip">Confidential and voluntary conversations</span>
+            <span class="chip">Peer support from pilots who understand the role</span>
+            <span class="chip">Guidance to professional care when needed</span>
+          </aside>
+        </section>
+
+        <hr class="divider" />
+
+        <section class="grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr));">
+          <article class="card stack"><h3>Trust & Confidentiality</h3><p>Conversations are handled with respect, care, and privacy-first principles.</p></article>
+          <article class="card stack"><h3>Peer Understanding</h3><p>Talk to people who understand aviation realities and cockpit responsibility.</p></article>
+          <article class="card stack"><h3>Ongoing Support</h3><p>Support is not one-off; we stay with you through the period you need it most.</p></article>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer"><div class="container">© 2026 Pegasus Pilot Peer Support. Every safe flight starts with a supported crew.</div></footer>
+    <script src="/script.js"></script>
+  </body>
+</html>

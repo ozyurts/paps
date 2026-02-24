@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="tr-TR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pegasus Peer Support | Pilot Destek</title>
+    <script>
+      (() => {
+        const stored = localStorage.getItem('theme') || 'system';
+        const dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.dataset.theme = stored === 'system' ? (dark ? 'dark' : 'light') : stored;
+      })();
+    </script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body data-locale="tr-TR">
+    <a class="skip-link" href="#main">İçeriğe geç</a>
+    <header class="site-header">
+      <div class="container nav-shell">
+        <a class="brand" href="/tr-TR/">
+          <span class="brand-mark">✈</span>
+          <span><strong>Pegasus</strong><small>Pilot Peer Support</small></span>
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu">☰</button>
+        <nav class="nav-menu" id="navMenu" aria-label="Ana menü">
+          <ul class="nav-links">
+            <li><a class="nav-link" href="/tr-TR/">Ana Sayfa</a></li>
+            <li><a class="nav-link" href="/tr-TR/program.html">Program</a></li>
+            <li><a class="nav-link" href="/tr-TR/resources.html">Kaynaklar</a></li>
+            <li><a class="nav-link" href="/tr-TR/contact.html">İletişim</a></li>
+          </ul>
+          <div class="nav-controls">
+            <select id="languageSwitcher" aria-label="Dil seçimi">
+              <option value="tr-TR">TR</option>
+              <option value="en-US">EN</option>
+            </select>
+            <button class="btn btn-ghost" id="themeToggle" type="button" aria-label="Tema değiştir">🖥️</button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="section">
+      <div class="container stack">
+        <section class="hero">
+          <div class="stack">
+            <span class="badge">Pilot Odaklı Dayanışma</span>
+            <h1>Zorlandığınız anlarda yalnız değilsiniz.</h1>
+            <p>
+              Pegasus Pilot Peer Support, Pegasus pilotlarının operasyonel stres, yorgunluk, kişisel zorluklar
+              veya kritik olaylar sonrasında güvenle başvurabileceği meslektaş destek ağıdır.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="/tr-TR/program.html">Destek sürecini incele</a>
+              <a class="btn btn-secondary" href="/tr-TR/contact.html">Destek talep et</a>
+            </div>
+          </div>
+          <aside class="card stack">
+            <h2>Bu program ne sunar?</h2>
+            <span class="chip">Gönüllü ve gizli paylaşım alanı</span>
+            <span class="chip">Pilot deneyimini bilen eş destek</span>
+            <span class="chip">İhtiyaç halinde profesyonel yönlendirme</span>
+          </aside>
+        </section>
+
+        <hr class="divider" />
+
+        <section class="grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr));">
+          <article class="card stack">
+            <h3>Gizlilik ve Güven</h3>
+            <p>Paylaşımlarınız saygı, güven ve etik çerçevede ele alınır; amaç sizi güçlendirmektir.</p>
+          </article>
+          <article class="card stack">
+            <h3>Meslektaş Desteği</h3>
+            <p>Sizi anlayan, benzer sorumlulukları yaşamış pilotlarla güvenli bir konuşma zemini sunarız.</p>
+          </article>
+          <article class="card stack">
+            <h3>Süreklilik</h3>
+            <p>Tek seferlik değil; ihtiyaç duyduğunuz dönem boyunca adım adım yanınızda oluruz.</p>
+          </article>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">© 2026 Pegasus Pilot Peer Support. Her uçuşun arkasında güçlü bir ekip vardır.</div>
+    </footer>
+    <script src="/script.js"></script>
+  </body>
+</html>

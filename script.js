@@ -1,89 +1,104 @@
-const languageSwitcher = document.getElementById('languageSwitcher');
-const themeToggle = document.getElementById('themeToggle');
+(() => {
+  const navToggle = document.getElementById('navToggle');
+  const navMenu = document.getElementById('navMenu');
+  const themeToggle = document.getElementById('themeToggle');
+  const languageSwitcher = document.getElementById('languageSwitcher');
+  const supportedLocales = ['tr-TR', 'en-US'];
 
-const translations = {
-  tr: {
-    languageLabel: 'Dil',
-    heroEyebrow: 'Pegasus İnsan Odaklı Destek',
-    heroTitle: 'Birlikte daha güçlü bir çalışma kültürü.',
-    heroDescription:
-      'Pegasus Peer Support, çalışanların güvenli, empatik ve erişilebilir bir destek ağına ulaşmasını sağlar. Kurumsal sağlık, psikolojik dayanıklılık ve ekip bağlılığını tek bir deneyimde birleştirir.',
-    exploreButton: 'Programı Keşfet',
-    contactButton: 'İletişime Geç',
-    statsTitle: 'Hızlı Bakış',
-    stat1Value: '7/24',
-    stat1Label: 'Erişilebilir destek',
-    stat2Value: '%100',
-    stat2Label: 'Gizlilik yaklaşımı',
-    stat3Value: '5+',
-    stat3Label: 'Çok dilli iletişim seçeneği',
-    feature1Title: 'Güvenli Görüşme Alanı',
-    feature1Desc:
-      'Çalışanlarınız için profesyonel standartlara uygun, güvenli ve gizlilik odaklı iletişim süreci.',
-    feature2Title: 'Uzman Eşleşmesi',
-    feature2Desc: 'İhtiyaca göre doğru uzmanla hızlı eşleşme sağlayan akıllı yönlendirme akışı.',
-    feature3Title: 'Sürdürülebilir İyilik Hali',
-    feature3Desc: 'Bireysel ve ekip düzeyinde iyi oluşu destekleyen ölçülebilir gelişim yaklaşımı.',
-    contactTitle: 'Kurumsal destek çözümlerimizi konuşalım',
-    contactDesc: 'İhtiyacınıza uygun peer support kurgusunu birlikte tasarlayalım.',
-    footerText: '© 2026 Pegasus Peer Support. Tüm hakları saklıdır.'
-  },
-  en: {
-    languageLabel: 'Language',
-    heroEyebrow: 'People-Centered Support by Pegasus',
-    heroTitle: 'Build a stronger workplace culture together.',
-    heroDescription:
-      'Pegasus Peer Support gives employees access to a safe, empathetic, and accessible support network. It combines corporate wellbeing, psychological resilience, and team engagement in one modern experience.',
-    exploreButton: 'Explore Program',
-    contactButton: 'Contact Us',
-    statsTitle: 'At a Glance',
-    stat1Value: '24/7',
-    stat1Label: 'Accessible support',
-    stat2Value: '100%',
-    stat2Label: 'Confidentiality-first approach',
-    stat3Value: '5+',
-    stat3Label: 'Multilingual communication options',
-    feature1Title: 'Secure Conversation Space',
-    feature1Desc:
-      'A professional, privacy-first communication flow for your employees and stakeholders.',
-    feature2Title: 'Expert Matching',
-    feature2Desc: 'Smart routing that quickly matches each case with the right specialist.',
-    feature3Title: 'Sustainable Wellbeing',
-    feature3Desc: 'A measurable approach that improves wellbeing across individuals and teams.',
-    contactTitle: 'Let’s discuss your corporate support strategy',
-    contactDesc: 'We can design the right peer support framework for your organization.',
-    footerText: '© 2026 Pegasus Peer Support. All rights reserved.'
+  const closeMenu = () => {
+    if (!navMenu || !navToggle) return;
+    navMenu.dataset.open = 'false';
+    navToggle.setAttribute('aria-expanded', 'false');
+  };
+
+  const openMenu = () => {
+    if (!navMenu || !navToggle) return;
+    navMenu.dataset.open = 'true';
+    navToggle.setAttribute('aria-expanded', 'true');
+  };
+
+  if (navToggle && navMenu) {
+    navToggle.addEventListener('click', () => {
+      const isOpen = navMenu.dataset.open === 'true';
+      isOpen ? closeMenu() : openMenu();
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        closeMenu();
+        navToggle.focus();
+      }
+    });
+
+    document.addEventListener('click', (event) => {
+      if (navMenu.dataset.open !== 'true') return;
+      if (!navMenu.contains(event.target) && !navToggle.contains(event.target)) {
+        closeMenu();
+      }
+    });
   }
-};
 
-const applyLanguage = (lang) => {
-  document.documentElement.lang = lang;
-  document.querySelectorAll('[data-i18n]').forEach((node) => {
-    const key = node.getAttribute('data-i18n');
-    node.textContent = translations[lang][key] || node.textContent;
+  const systemDark = window.matchMedia('(prefers-color-scheme: dark)');
+  const readTheme = () => localStorage.getItem('theme') || 'system';
+
+  const resolveTheme = (theme) => {
+    if (theme === 'system') return systemDark.matches ? 'dark' : 'light';
+    return theme;
+  };
+
+  const applyTheme = (theme) => {
+    const resolved = resolveTheme(theme);
+    document.documentElement.dataset.theme = resolved;
+    if (themeToggle) {
+      themeToggle.textContent = theme === 'system' ? '🖥️' : resolved === 'dark' ? '🌙' : '☀️';
+      themeToggle.setAttribute('aria-label', `Theme: ${theme}`);
+      themeToggle.dataset.themeMode = theme;
+    }
+  };
+
+  let theme = readTheme();
+  applyTheme(theme);
+  systemDark.addEventListener('change', () => {
+    if ((localStorage.getItem('theme') || 'system') === 'system') applyTheme('system');
   });
-  localStorage.setItem('preferred-language', lang);
-};
 
-const applyTheme = (theme) => {
-  document.documentElement.setAttribute('data-theme', theme);
-  themeToggle.textContent = theme === 'dark' ? '🌙' : '☀️';
-  themeToggle.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
-  localStorage.setItem('preferred-theme', theme);
-};
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const order = ['light', 'dark', 'system'];
+      const current = themeToggle.dataset.themeMode || theme;
+      const next = order[(order.indexOf(current) + 1) % order.length];
+      localStorage.setItem('theme', next);
+      theme = next;
+      applyTheme(next);
+    });
+  }
 
-languageSwitcher.addEventListener('change', (event) => {
-  applyLanguage(event.target.value);
-});
+  const path = window.location.pathname;
+  document.querySelectorAll('.nav-link').forEach((link) => {
+    if (link.getAttribute('href') === path) {
+      link.classList.add('active');
+      link.setAttribute('aria-current', 'page');
+    }
+  });
 
-themeToggle.addEventListener('click', () => {
-  const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
-  applyTheme(currentTheme === 'light' ? 'dark' : 'light');
-});
+  if (languageSwitcher) {
+    const currentLocale = supportedLocales.find((locale) => path.startsWith(`/${locale}`)) || 'tr-TR';
+    languageSwitcher.value = currentLocale;
 
-const preferredLanguage = localStorage.getItem('preferred-language') || 'tr';
-const preferredTheme = localStorage.getItem('preferred-theme') || 'light';
+    languageSwitcher.addEventListener('change', (event) => {
+      const targetLocale = event.target.value;
+      localStorage.setItem('lang', targetLocale);
 
-languageSwitcher.value = preferredLanguage;
-applyLanguage(preferredLanguage);
-applyTheme(preferredTheme);
+      const localizedPart = path.replace(`/${currentLocale}`, '') || '/';
+      const targetPath = `/${targetLocale}${localizedPart === '/' ? '/' : localizedPart}`;
+
+      fetch(targetPath, { method: 'HEAD' })
+        .then((response) => {
+          window.location.href = response.ok ? targetPath : `/${targetLocale}/`;
+        })
+        .catch(() => {
+          window.location.href = `/${targetLocale}/`;
+        });
+    });
+  }
+})();
