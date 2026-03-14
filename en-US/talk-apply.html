@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Apply for Myself | Pegasus Peer Support</title>
+    <script>
+      (() => {
+        const s = localStorage.getItem('theme') || 'system';
+        const d = matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.dataset.theme = s === 'system' ? (d ? 'dark' : 'light') : s;
+      })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body data-locale="en-US">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="container nav-shell">
+        <a class="brand" href="/en-US/">
+          <span class="brand-mark">&#9992;</span>
+          <span class="brand-text"><strong>Pegasus</strong><small>Peer Support</small></span>
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu">&#9776;</button>
+        <nav class="nav-menu" id="navMenu" aria-label="Main navigation">
+          <ul class="nav-links">
+            <li><a class="nav-link" href="/en-US/">Home</a></li>
+            <li><a class="nav-link" href="/en-US/talk.html">Talk to a Peer</a></li>
+            <li><a class="nav-link" href="/en-US/faq.html">FAQ</a></li>
+            <li><a class="nav-link" href="/en-US/contact.html">Contact</a></li>
+            <li><a class="nav-link" href="/en-US/peers.html">Our Peers</a></li>
+          </ul>
+          <div class="nav-controls">
+            <select id="languageSwitcher" aria-label="Language">
+              <option value="tr-TR">TR</option>
+              <option value="en-US">EN</option>
+            </select>
+            <button class="btn btn-ghost btn-icon" type="button" id="themeToggle" aria-label="Toggle theme">&#128421;&#65039;</button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="page-header">
+        <div class="container stack fade-in">
+          <div>
+            <a href="/en-US/talk.html" style="text-decoration:none;font-size:var(--text-sm);color:var(--color-text-muted);">&larr; Go back</a>
+          </div>
+          <span class="badge">&#128100; Apply for Myself</span>
+          <h1>Apply for peer support</h1>
+          <p>Fill out the form below to request a session with one of our peers. All your information will be kept confidential.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container" style="max-width: 640px;">
+          <form class="card form-grid fade-in" data-validate>
+            <fieldset style="border:none;padding:0;margin:0;" class="form-grid">
+              <legend style="font-weight:700;font-size:var(--text-lg);margin-bottom:var(--space-3);">Personal Information</legend>
+              <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="Your full name" />
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="title">Title *</label>
+                  <select id="title" name="title" required>
+                    <option value="" disabled selected>Select title</option>
+                    <option value="student">Student Pilot (TRT)</option>
+                    <option value="captain">Captain</option>
+                    <option value="first-officer">First Officer</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="location">Location *</label>
+                  <select id="location" name="location" required>
+                    <option value="" disabled selected>Select location</option>
+                    <option value="SAW">SAW</option>
+                    <option value="ADB">ADB</option>
+                    <option value="AYT">AYT</option>
+                    <option value="ESB">ESB</option>
+                    <option value="ECN">ECN</option>
+                    <option value="ADA">ADA</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="email">Email *</label>
+                  <input type="email" id="email" name="email" placeholder="example@pegasus.com" required />
+                </div>
+                <div class="form-group">
+                  <label for="phone">Phone</label>
+                  <input type="tel" id="phone" name="phone" placeholder="5XX XXX XX XX" />
+                </div>
+              </div>
+            </fieldset>
+
+            <hr class="divider" />
+
+            <fieldset style="border:none;padding:0;margin:0;" class="form-grid">
+              <legend style="font-weight:700;font-size:var(--text-lg);margin-bottom:var(--space-3);">Request Details</legend>
+              <div class="form-group">
+                <label for="urgency">Urgency Level *</label>
+                <select id="urgency" name="urgency" required>
+                  <option value="" disabled selected>Select urgency</option>
+                  <option value="high">High</option>
+                  <option value="medium">Medium</option>
+                  <option value="low">Low</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="topic">Conversation Topic</label>
+                <select id="topic" name="topic">
+                  <option value="" disabled selected>Select topic</option>
+                  <option value="cirm">CIRM</option>
+                  <option value="fatigue">Fatigue &amp; Sleep Issues</option>
+                  <option value="chronic-illness">Chronic Illness</option>
+                  <option value="training">Training Related</option>
+                  <option value="substance">Substance Use</option>
+                  <option value="adaptation">Adaptation Issues</option>
+                  <option value="interpersonal">Interpersonal Communication</option>
+                  <option value="grief">Loss &amp; Grief</option>
+                  <option value="divorce">Divorce</option>
+                  <option value="stress">Stress Management</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="peer">Peer Selection</label>
+                <select id="peer" name="peer">
+                  <option value="" selected>No preference</option>
+                  <option value="tufan-a">Tufan A. - Group Representative</option>
+                  <option value="nihat-p">Nihat P. - Captain</option>
+                  <option value="akin-e">Akin E. - Captain</option>
+                  <option value="cihan-u">Cihan U. - Captain</option>
+                  <option value="guven-t">Guven T. - Captain</option>
+                  <option value="ozcan-o">Ozcan O. - First Officer</option>
+                  <option value="omer-a">Omer A. - Captain</option>
+                  <option value="mehmet-yucel-i">Mehmet Yucel I. - Pilot</option>
+                  <option value="ahmet-bugra-y">Ahmet Bugra Y. - Pilot</option>
+                  <option value="goksen-o">Goksen O. - First Officer</option>
+                  <option value="savas-b">Savas B. - Captain</option>
+                  <option value="gizem-duygu-g">Gizem Duygu G. - Captain</option>
+                  <option value="ezgi-o">Ezgi O. - First Officer / SFI</option>
+                  <option value="tayfun-t">Tayfun T. - Captain</option>
+                  <option value="cihan-a">Cihan A. - Captain</option>
+                  <option value="semih-s">Semih S. - Captain</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="message">Request Details</label>
+                <textarea id="message" name="message" rows="4" placeholder="Share any details you'd like us to know before the session..."></textarea>
+              </div>
+            </fieldset>
+
+            <hr class="divider" />
+
+            <div class="form-group">
+              <label style="display:flex;align-items:start;gap:var(--space-2);font-weight:400;cursor:pointer;">
+                <input type="checkbox" name="terms" required style="width:auto;min-height:auto;margin-top:0.25rem;" />
+                <span>I have read and accept the PAPS Program Terms and Conditions. *</span>
+              </label>
+            </div>
+            <div class="form-group">
+              <label style="display:flex;align-items:start;gap:var(--space-2);font-weight:400;cursor:pointer;">
+                <input type="checkbox" name="privacy" required style="width:auto;min-height:auto;margin-top:0.25rem;" />
+                <span>I have read and approve the PAPS Privacy Notice. *</span>
+              </label>
+            </div>
+
+            <p class="form-hint">&#128274; Your information will be kept fully confidential and used only for the matching process.</p>
+            <button class="btn btn-primary btn-lg" type="submit">Submit Application</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-bottom">
+          <span>&copy; 2026 Pegasus Peer Support. All rights reserved.</span>
+        </div>
+      </div>
+    </footer>
+
+    <script src="/script.js"></script>
+  </body>
+</html>
