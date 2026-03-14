@@ -139,14 +139,82 @@
     fadeEls.forEach((el) => observer.observe(el));
   }
 
-  /* ===== FORM VALIDATION FEEDBACK ===== */
+  /* ===== FORM SUBMISSION ===== */
+  const locale = document.body.dataset.locale || 'tr-TR';
+  const isTR = locale === 'tr-TR';
+
+  const successMessages = {
+    'tr-TR': { title: 'Başarıyla gönderildi!', body: 'En kısa sürede sizinle iletişime geçeceğiz.' },
+    'en-US': { title: 'Successfully submitted!', body: 'We will contact you as soon as possible.' },
+  };
+  const errorMessages = {
+    'tr-TR': 'Bir hata oluştu. Lütfen tekrar deneyin.',
+    'en-US': 'An error occurred. Please try again.',
+  };
+  const sendingText = { 'tr-TR': 'Gönderiliyor...', 'en-US': 'Sending...' };
+
   document.querySelectorAll('form[data-validate]').forEach((form) => {
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
       if (!form.checkValidity()) {
-        e.preventDefault();
-        form.querySelectorAll(':invalid').forEach((field) => {
-          field.classList.add('touched');
+        form.querySelectorAll(':invalid').forEach((field) => field.classList.add('touched'));
+        return;
+      }
+
+      const formType = form.dataset.formType;
+      if (!formType) return;
+
+      // Collect form data
+      const data = {};
+      const fd = new FormData(form);
+      for (const [key, value] of fd.entries()) {
+        data[key] = value;
+      }
+
+      // Add human-readable labels for selects
+      form.querySelectorAll('select').forEach((sel) => {
+        if (sel.selectedIndex >= 0 && sel.options[sel.selectedIndex].value) {
+          data[sel.name + '_label'] = sel.options[sel.selectedIndex].text;
+        }
+      });
+
+      // Add radio button labels
+      form.querySelectorAll('input[type="radio"]:checked').forEach((radio) => {
+        const lbl = radio.closest('label');
+        if (lbl) data[radio.name + '_label'] = lbl.textContent.trim();
+      });
+
+      data.locale = locale;
+
+      const btn = form.querySelector('[type="submit"]');
+      const origText = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = sendingText[locale] || sendingText['en-US'];
+
+      try {
+        const res = await fetch(`/api/${formType}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
         });
+        const result = await res.json();
+
+        if (result.ok) {
+          const msg = successMessages[locale] || successMessages['en-US'];
+          form.innerHTML =
+            '<div class="text-center stack" style="padding:var(--space-6) 0;">' +
+            '<div style="font-size:3rem;">&#9989;</div>' +
+            '<h2>' + msg.title + '</h2>' +
+            '<p style="color:var(--color-text-muted);">' + msg.body + '</p>' +
+            '</div>';
+        } else {
+          throw new Error(result.message);
+        }
+      } catch (err) {
+        btn.disabled = false;
+        btn.textContent = origText;
+        alert(errorMessages[locale] || errorMessages['en-US']);
       }
     });
   });
