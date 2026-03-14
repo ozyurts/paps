@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FAQ | Pegasus Peer Support</title>
+    <script>
+      (() => {
+        const s = localStorage.getItem('theme') || 'system';
+        const d = matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.dataset.theme = s === 'system' ? (d ? 'dark' : 'light') : s;
+      })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body data-locale="en-US">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="container nav-shell">
+        <a class="brand" href="/en-US/">
+          <span class="brand-mark">&#9992;</span>
+          <span class="brand-text"><strong>Pegasus</strong><small>Peer Support</small></span>
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu">&#9776;</button>
+        <nav class="nav-menu" id="navMenu" aria-label="Main navigation">
+          <ul class="nav-links">
+            <li><a class="nav-link" href="/en-US/">Home</a></li>
+            <li><a class="nav-link" href="/en-US/talk.html">Talk to a Peer</a></li>
+            <li><a class="nav-link" href="/en-US/faq.html">FAQ</a></li>
+            <li><a class="nav-link" href="/en-US/contact.html">Contact</a></li>
+            <li><a class="nav-link" href="/en-US/peers.html">Our Peers</a></li>
+          </ul>
+          <div class="nav-controls">
+            <select id="languageSwitcher" aria-label="Language">
+              <option value="tr-TR">TR</option>
+              <option value="en-US">EN</option>
+            </select>
+            <button class="btn btn-ghost btn-icon" type="button" id="themeToggle" aria-label="Toggle theme">&#128421;&#65039;</button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="page-header">
+        <div class="container stack fade-in">
+          <span class="badge">&#10067; Frequently Asked Questions</span>
+          <h1>We answer your questions</h1>
+          <p>Find answers to the most commonly asked questions about the Peer Support program below.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container" style="max-width: 760px;">
+          <div class="accordion fade-in">
+
+            <div class="accordion-item open">
+              <button class="accordion-trigger" aria-expanded="true">
+                <span>What is Peer Support?</span>
+                <span class="accordion-icon">&#9660;</span>
+              </button>
+              <div class="accordion-body">
+                <p>Peer Support is a program where trained employees provide confidential and safe support to their colleagues. It does not replace professional therapy, but serves as a valuable resource for initial support and referrals.</p>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-trigger" aria-expanded="false">
+                <span>Are conversations confidential?</span>
+                <span class="accordion-icon">&#9660;</span>
+              </button>
+              <div class="accordion-body">
+                <p>Yes, all conversations are conducted under a 100% confidentiality principle. Peers do not share conversation content with managers or third parties. Limited exceptions may apply only in cases of serious safety threats as required by law.</p>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-trigger" aria-expanded="false">
+                <span>Who can apply?</span>
+                <span class="accordion-icon">&#9660;</span>
+              </button>
+              <div class="accordion-body">
+                <p>All Pegasus employees (cockpit, cabin, technical, office, etc.) can apply to the program. You can apply for yourself or make an anonymous referral for a colleague.</p>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-trigger" aria-expanded="false">
+                <span>How long does the application process take?</span>
+                <span class="accordion-icon">&#9660;</span>
+              </button>
+              <div class="accordion-body">
+                <p>After your application is received, you will typically be matched with a suitable peer within 24-48 hours. The process can be expedited in urgent cases.</p>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-trigger" aria-expanded="false">
+                <span>Are peers professional psychologists?</span>
+                <span class="accordion-icon">&#9660;</span>
+              </button>
+              <div class="accordion-body">
+                <p>Peers are not professional psychologists or therapists, but they are specially trained and certified employees. When needed, they can refer you to professional support resources.</p>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-trigger" aria-expanded="false">
+                <span>What topics can I get support for?</span>
+                <span class="accordion-icon">&#9660;</span>
+              </button>
+              <div class="accordion-body">
+                <p>You can get support for work stress, burnout, personal difficulties, grief, work-life balance, team communication issues, and many other topics. Peers listen without judgment and work with you to find solutions.</p>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-trigger" aria-expanded="false">
+                <span>Is the program free?</span>
+                <span class="accordion-icon">&#9660;</span>
+              </button>
+              <div class="accordion-body">
+                <p>Yes, the Peer Support program is completely free for all Pegasus employees.</p>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-trigger" aria-expanded="false">
+                <span>Will my manager know I applied?</span>
+                <span class="accordion-icon">&#9660;</span>
+              </button>
+              <div class="accordion-body">
+                <p>No. Your application and conversation content are kept fully confidential. Your manager, HR department, or any third party will not be informed.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <section class="section" style="background: var(--color-surface-alt);">
+        <div class="container text-center stack fade-in">
+          <h2>Question not answered?</h2>
+          <p style="margin-inline:auto;">You can write to us directly, and we'll get back to you as soon as possible.</p>
+          <div>
+            <a class="btn btn-primary btn-lg" href="/en-US/contact.html">Contact Us</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-bottom">
+          <span>&copy; 2026 Pegasus Peer Support. All rights reserved.</span>
+        </div>
+      </div>
+    </footer>
+
+    <script src="/script.js"></script>
+  </body>
+</html>

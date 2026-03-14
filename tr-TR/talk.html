@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="tr-TR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Peer ile Konuş | Pegasus Peer Support</title>
+    <meta name="description" content="Akranlarımızdan biri ile görüşmek için başvuru yap." />
+    <script>
+      (() => {
+        const s = localStorage.getItem('theme') || 'system';
+        const d = matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.dataset.theme = s === 'system' ? (d ? 'dark' : 'light') : s;
+      })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body data-locale="tr-TR">
+    <a class="skip-link" href="#main">İçeriğe geç</a>
+
+    <header class="site-header">
+      <div class="container nav-shell">
+        <a class="brand" href="/tr-TR/">
+          <span class="brand-mark">&#9992;</span>
+          <span class="brand-text"><strong>Pegasus</strong><small>Peer Support</small></span>
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu">&#9776;</button>
+        <nav class="nav-menu" id="navMenu" aria-label="Ana menü">
+          <ul class="nav-links">
+            <li><a class="nav-link" href="/tr-TR/">Ana Sayfa</a></li>
+            <li><a class="nav-link" href="/tr-TR/talk.html">Peer ile Konuş</a></li>
+            <li><a class="nav-link" href="/tr-TR/faq.html">S.S.S.</a></li>
+            <li><a class="nav-link" href="/tr-TR/contact.html">İletişim</a></li>
+            <li><a class="nav-link" href="/tr-TR/peers.html">Akranlarımız</a></li>
+          </ul>
+          <div class="nav-controls">
+            <select id="languageSwitcher" aria-label="Dil seçimi">
+              <option value="tr-TR">TR</option>
+              <option value="en-US">EN</option>
+            </select>
+            <button class="btn btn-ghost btn-icon" type="button" id="themeToggle" aria-label="Tema değiştir">&#128421;&#65039;</button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="page-header">
+        <div class="container stack fade-in">
+          <span class="badge">&#128172; Peer ile Konuş</span>
+          <h1>Akranlarımızdan biri ile görüşmek ister misin?</h1>
+          <p>Bizimle iletişime geç! Kendin için başvurabileceğin gibi, bir arkadaşın için de yönlendirme yapabilirsin. Süreci tamamlamak için lütfen aşağıdaki seçeneklerden birini seç.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="talk-options fade-in">
+            <article class="card card-hover talk-option-card stack">
+              <div class="card-icon card-icon-red" style="width:4rem;height:4rem;font-size:1.8rem;border-radius:50%;margin-inline:auto;">&#128100;</div>
+              <h3>Kendim İçin</h3>
+              <p style="margin-inline:auto;">Kendin için bir peer desteği görüşmesi talep et. Tüm bilgilerin gizli tutulacaktır.</p>
+              <a class="btn btn-primary btn-lg" href="/tr-TR/talk-apply.html">Başvur</a>
+            </article>
+            <article class="card card-hover talk-option-card stack">
+              <div class="card-icon card-icon-blue" style="width:4rem;height:4rem;font-size:1.8rem;border-radius:50%;margin-inline:auto;">&#128101;</div>
+              <h3>Başkası İçin</h3>
+              <p style="margin-inline:auto;">Bir arkadaşın veya meslektaşın için yönlendirme yap. İsimsiz başvuru da yapabilirsin.</p>
+              <a class="btn btn-secondary btn-lg" href="/tr-TR/talk-apply-other.html">Yönlendir</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" style="background: var(--color-surface-alt);">
+        <div class="container stack-lg text-center fade-in">
+          <h2>Süreç nasıl işliyor?</h2>
+          <div class="grid grid-3">
+            <div class="stack-sm">
+              <div class="card-icon card-icon-amber" style="margin-inline:auto;font-weight:800;">1</div>
+              <h4>Formu Doldur</h4>
+              <p style="margin-inline:auto;">Kendine veya başkası için kısa başvuru formunu tamamla.</p>
+            </div>
+            <div class="stack-sm">
+              <div class="card-icon card-icon-amber" style="margin-inline:auto;font-weight:800;">2</div>
+              <h4>Eşleşme</h4>
+              <p style="margin-inline:auto;">Ekibimiz en uygun akranı belirler ve seninle iletişime geçer.</p>
+            </div>
+            <div class="stack-sm">
+              <div class="card-icon card-icon-amber" style="margin-inline:auto;font-weight:800;">3</div>
+              <h4>Görüşme</h4>
+              <p style="margin-inline:auto;">Güvenli bir ortamda akranınla görüşürsün.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-bottom">
+          <span>&copy; 2026 Pegasus Peer Support. Tüm hakları saklıdır.</span>
+        </div>
+      </div>
+    </footer>
+
+    <script src="/script.js"></script>
+  </body>
+</html>

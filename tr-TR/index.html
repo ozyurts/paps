@@ -4,58 +4,183 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pegasus Peer Support | Ana Sayfa</title>
+    <meta name="description" content="Pegasus Peer Support - Akran desteği ile birlikte daha güçlü bir çalışma kültürü oluşturuyoruz." />
     <script>
       (() => {
-        const stored = localStorage.getItem('theme') || 'system';
-        const dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        document.documentElement.dataset.theme = stored === 'system' ? (dark ? 'dark' : 'light') : stored;
+        const s = localStorage.getItem('theme') || 'system';
+        const d = matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.dataset.theme = s === 'system' ? (d ? 'dark' : 'light') : s;
       })();
     </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body data-locale="tr-TR">
     <a class="skip-link" href="#main">İçeriğe geç</a>
+
     <header class="site-header">
       <div class="container nav-shell">
         <a class="brand" href="/tr-TR/">
-          <span class="brand-mark">✈</span><span><strong>Pegasus</strong><small>Peer Support</small></span>
+          <span class="brand-mark">&#9992;</span>
+          <span class="brand-text"><strong>Pegasus</strong><small>Peer Support</small></span>
         </a>
-        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu">☰</button>
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu">&#9776;</button>
         <nav class="nav-menu" id="navMenu" aria-label="Ana menü">
           <ul class="nav-links">
             <li><a class="nav-link" href="/tr-TR/">Ana Sayfa</a></li>
-            <li><a class="nav-link" href="/tr-TR/program.html">Program</a></li>
-            <li><a class="nav-link" href="/tr-TR/resources.html">Kaynaklar</a></li>
+            <li><a class="nav-link" href="/tr-TR/talk.html">Peer ile Konuş</a></li>
+            <li><a class="nav-link" href="/tr-TR/faq.html">S.S.S.</a></li>
             <li><a class="nav-link" href="/tr-TR/contact.html">İletişim</a></li>
+            <li><a class="nav-link" href="/tr-TR/peers.html">Akranlarımız</a></li>
           </ul>
           <div class="nav-controls">
-            <select id="languageSwitcher" aria-label="Dil seçimi"><option value="tr-TR">TR</option><option value="en-US">EN</option></select>
-            <button class="btn btn-ghost" type="button" id="themeToggle" aria-label="Tema değiştir">🖥️</button>
+            <select id="languageSwitcher" aria-label="Dil seçimi">
+              <option value="tr-TR">TR</option>
+              <option value="en-US">EN</option>
+            </select>
+            <button class="btn btn-ghost btn-icon" type="button" id="themeToggle" aria-label="Tema değiştir">&#128421;&#65039;</button>
           </div>
         </nav>
       </div>
     </header>
 
-    <main id="main" class="section">
-      <div class="container stack">
-        <section class="hero">
-          <div class="stack">
-            <span class="badge">İnsan Odaklı Destek</span>
-            <h1>Birlikte daha güçlü bir çalışma kültürü.</h1>
-            <p>Pegasus Peer Support, çalışanların güvenli ve erişilebilir bir destek ağına ulaşmasını sağlar.</p>
-            <div class="hero-actions"><a class="btn btn-primary" href="/tr-TR/program.html">Programı keşfet</a><a class="btn btn-secondary" href="/tr-TR/contact.html">İletişime geç</a></div>
+    <main id="main">
+      <!-- HERO -->
+      <section class="section-lg">
+        <div class="container">
+          <div class="hero">
+            <div class="hero-content fade-in">
+              <span class="badge">&#10024; Akran Destek Programı</span>
+              <h1>Birlikte daha güçlü bir çalışma kültürü.</h1>
+              <p>Pegasus Peer Support, çalışanların güvenli ve erişilebilir bir destek ağına ulaşmasını sağlar. Kendin veya bir arkadaşın için başvurabilirsin.</p>
+              <div class="hero-actions">
+                <a class="btn btn-primary btn-lg" href="/tr-TR/talk.html">Peer ile Konuş</a>
+                <a class="btn btn-outline btn-lg" href="/tr-TR/contact.html">İletişime Geç</a>
+              </div>
+            </div>
+            <aside class="hero-visual fade-in">
+              <div class="card stack">
+                <h2>Hızlı Bakış</h2>
+                <div class="hero-stats">
+                  <div>
+                    <span class="hero-stat-value">7/24</span>
+                    <span class="hero-stat-label">Erişim</span>
+                  </div>
+                  <div>
+                    <span class="hero-stat-value">%100</span>
+                    <span class="hero-stat-label">Gizlilik</span>
+                  </div>
+                  <div>
+                    <span class="hero-stat-value">2+</span>
+                    <span class="hero-stat-label">Dil Desteği</span>
+                  </div>
+                </div>
+                <div class="stack-sm">
+                  <span class="chip"><span class="chip-icon">&#128274;</span> Tamamen gizli görüşmeler</span>
+                  <span class="chip"><span class="chip-icon">&#127760;</span> Çok dilli destek</span>
+                  <span class="chip"><span class="chip-icon">&#128153;</span> Profesyonel akran eşleşmesi</span>
+                </div>
+              </div>
+            </aside>
           </div>
-          <aside class="card stack"><h2>Hızlı Bakış</h2><span class="chip">7/24 erişim</span><span class="chip">%100 gizlilik yaklaşımı</span><span class="chip">Çok dilli destek</span></aside>
-        </section>
-        <hr class="divider" />
-        <section class="grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr));">
-          <article class="card stack"><h3>Güvenli Görüşme</h3><p>Profesyonel standartlarda, gizlilik odaklı iletişim.</p></article>
-          <article class="card stack"><h3>Uzman Eşleşmesi</h3><p>İhtiyaca göre en uygun uzman ile hızlı yönlendirme.</p></article>
-          <article class="card stack"><h3>Sürdürülebilir İyilik Hali</h3><p>Bireysel ve ekip iyi oluşunu ölçülebilir biçimde güçlendirin.</p></article>
-        </section>
-      </div>
+        </div>
+      </section>
+
+      <hr class="divider container" />
+
+      <!-- FEATURES -->
+      <section class="section">
+        <div class="container stack-lg">
+          <div class="text-center fade-in">
+            <span class="eyebrow">Neden Peer Support?</span>
+            <h2 style="margin-top: var(--space-3)">Güvenli, profesyonel ve erişilebilir destek</h2>
+          </div>
+          <div class="grid grid-3 fade-in">
+            <article class="card card-hover stack">
+              <div class="card-icon card-icon-red">&#128172;</div>
+              <h3>Güvenli Görüşme</h3>
+              <p>Profesyonel standartlarda, gizlilik odaklı iletişim. Tüm görüşmeleriniz tamamen gizli tutulur.</p>
+            </article>
+            <article class="card card-hover stack">
+              <div class="card-icon card-icon-blue">&#129309;</div>
+              <h3>Uzman Eşleşmesi</h3>
+              <p>İhtiyaca göre en uygun akran ile hızlı ve doğru yönlendirme yapılır.</p>
+            </article>
+            <article class="card card-hover stack">
+              <div class="card-icon card-icon-green">&#127793;</div>
+              <h3>Sürdürülebilir İyilik Hali</h3>
+              <p>Bireysel ve ekip iyi oluşunu ölçülebilir biçimde güçlendirin.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- HOW IT WORKS -->
+      <section class="section" style="background: var(--color-surface-alt);">
+        <div class="container stack-lg">
+          <div class="text-center fade-in">
+            <span class="eyebrow">Nasıl Çalışır?</span>
+            <h2 style="margin-top: var(--space-3)">Üç kolay adımda destek al</h2>
+          </div>
+          <div class="grid grid-3 fade-in">
+            <article class="card card-hover stack">
+              <div class="card-icon card-icon-amber">1</div>
+              <h4>Başvuru Yap</h4>
+              <p>Kendin veya bir arkadaşın için güvenli kanal üzerinden kısa bir talep bırak.</p>
+            </article>
+            <article class="card card-hover stack">
+              <div class="card-icon card-icon-amber">2</div>
+              <h4>Eşleşme</h4>
+              <p>İhtiyacına göre en uygun akran ile eşleştirilirsin.</p>
+            </article>
+            <article class="card card-hover stack">
+              <div class="card-icon card-icon-amber">3</div>
+              <h4>Görüşme & Takip</h4>
+              <p>Akranınla güvenli bir ortamda konuşursun. İstersen takip görüşmesi de planlanır.</p>
+            </article>
+          </div>
+          <div class="text-center fade-in">
+            <a class="btn btn-primary btn-lg" href="/tr-TR/talk.html">Hemen Başvur</a>
+          </div>
+        </div>
+      </section>
     </main>
-    <footer class="site-footer"><div class="container">© 2026 Pegasus Peer Support. Tüm hakları saklıdır.</div></footer>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a class="brand" href="/tr-TR/">
+              <span class="brand-mark">&#9992;</span>
+              <span class="brand-text"><strong>Pegasus</strong><small>Peer Support</small></span>
+            </a>
+            <p style="font-size: var(--text-sm)">Çalışanların güvenli ve erişilebilir bir destek ağına ulaşmasını sağlıyoruz.</p>
+          </div>
+          <div>
+            <div class="footer-heading">Sayfalar</div>
+            <ul class="footer-links">
+              <li><a href="/tr-TR/">Ana Sayfa</a></li>
+              <li><a href="/tr-TR/talk.html">Peer ile Konuş</a></li>
+              <li><a href="/tr-TR/peers.html">Akranlarımız</a></li>
+            </ul>
+          </div>
+          <div>
+            <div class="footer-heading">Destek</div>
+            <ul class="footer-links">
+              <li><a href="/tr-TR/faq.html">S.S.S.</a></li>
+              <li><a href="/tr-TR/contact.html">İletişim</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>&copy; 2026 Pegasus Peer Support. Tüm hakları saklıdır.</span>
+          <span>Gizlilik &amp; Güvenlik</span>
+        </div>
+      </div>
+    </footer>
+
     <script src="/script.js"></script>
   </body>
 </html>

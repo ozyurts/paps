@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Talk to a Peer | Pegasus Peer Support</title>
+    <script>
+      (() => {
+        const s = localStorage.getItem('theme') || 'system';
+        const d = matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.dataset.theme = s === 'system' ? (d ? 'dark' : 'light') : s;
+      })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body data-locale="en-US">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="container nav-shell">
+        <a class="brand" href="/en-US/">
+          <span class="brand-mark">&#9992;</span>
+          <span class="brand-text"><strong>Pegasus</strong><small>Peer Support</small></span>
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu">&#9776;</button>
+        <nav class="nav-menu" id="navMenu" aria-label="Main navigation">
+          <ul class="nav-links">
+            <li><a class="nav-link" href="/en-US/">Home</a></li>
+            <li><a class="nav-link" href="/en-US/talk.html">Talk to a Peer</a></li>
+            <li><a class="nav-link" href="/en-US/faq.html">FAQ</a></li>
+            <li><a class="nav-link" href="/en-US/contact.html">Contact</a></li>
+            <li><a class="nav-link" href="/en-US/peers.html">Our Peers</a></li>
+          </ul>
+          <div class="nav-controls">
+            <select id="languageSwitcher" aria-label="Language">
+              <option value="tr-TR">TR</option>
+              <option value="en-US">EN</option>
+            </select>
+            <button class="btn btn-ghost btn-icon" type="button" id="themeToggle" aria-label="Toggle theme">&#128421;&#65039;</button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="page-header">
+        <div class="container stack fade-in">
+          <span class="badge">&#128172; Talk to a Peer</span>
+          <h1>Would you like to talk to one of our peers?</h1>
+          <p>Get in touch! You can apply for yourself or refer a colleague. Please choose one of the options below to get started.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="talk-options fade-in">
+            <article class="card card-hover talk-option-card stack">
+              <div class="card-icon card-icon-red" style="width:4rem;height:4rem;font-size:1.8rem;border-radius:50%;margin-inline:auto;">&#128100;</div>
+              <h3>For Myself</h3>
+              <p style="margin-inline:auto;">Request a peer support session for yourself. All your information will be kept confidential.</p>
+              <a class="btn btn-primary btn-lg" href="/en-US/talk-apply.html">Apply</a>
+            </article>
+            <article class="card card-hover talk-option-card stack">
+              <div class="card-icon card-icon-blue" style="width:4rem;height:4rem;font-size:1.8rem;border-radius:50%;margin-inline:auto;">&#128101;</div>
+              <h3>For Someone Else</h3>
+              <p style="margin-inline:auto;">Refer a friend or colleague for peer support. You can also apply anonymously.</p>
+              <a class="btn btn-secondary btn-lg" href="/en-US/talk-apply-other.html">Refer</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" style="background: var(--color-surface-alt);">
+        <div class="container stack-lg text-center fade-in">
+          <h2>How does the process work?</h2>
+          <div class="grid grid-3">
+            <div class="stack-sm">
+              <div class="card-icon card-icon-amber" style="margin-inline:auto;font-weight:800;">1</div>
+              <h4>Fill the Form</h4>
+              <p style="margin-inline:auto;">Complete the short application form for yourself or someone else.</p>
+            </div>
+            <div class="stack-sm">
+              <div class="card-icon card-icon-amber" style="margin-inline:auto;font-weight:800;">2</div>
+              <h4>Matching</h4>
+              <p style="margin-inline:auto;">Our team identifies the best peer and contacts you.</p>
+            </div>
+            <div class="stack-sm">
+              <div class="card-icon card-icon-amber" style="margin-inline:auto;font-weight:800;">3</div>
+              <h4>Conversation</h4>
+              <p style="margin-inline:auto;">Have a confidential conversation with your peer.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-bottom">
+          <span>&copy; 2026 Pegasus Peer Support. All rights reserved.</span>
+        </div>
+      </div>
+    </footer>
+
+    <script src="/script.js"></script>
+  </body>
+</html>

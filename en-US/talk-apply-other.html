@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Refer Someone | Pegasus Peer Support</title>
+    <script>
+      (() => {
+        const s = localStorage.getItem('theme') || 'system';
+        const d = matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.dataset.theme = s === 'system' ? (d ? 'dark' : 'light') : s;
+      })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body data-locale="en-US">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="container nav-shell">
+        <a class="brand" href="/en-US/">
+          <span class="brand-mark">&#9992;</span>
+          <span class="brand-text"><strong>Pegasus</strong><small>Peer Support</small></span>
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu">&#9776;</button>
+        <nav class="nav-menu" id="navMenu" aria-label="Main navigation">
+          <ul class="nav-links">
+            <li><a class="nav-link" href="/en-US/">Home</a></li>
+            <li><a class="nav-link" href="/en-US/talk.html">Talk to a Peer</a></li>
+            <li><a class="nav-link" href="/en-US/faq.html">FAQ</a></li>
+            <li><a class="nav-link" href="/en-US/contact.html">Contact</a></li>
+            <li><a class="nav-link" href="/en-US/peers.html">Our Peers</a></li>
+          </ul>
+          <div class="nav-controls">
+            <select id="languageSwitcher" aria-label="Language">
+              <option value="tr-TR">TR</option>
+              <option value="en-US">EN</option>
+            </select>
+            <button class="btn btn-ghost btn-icon" type="button" id="themeToggle" aria-label="Toggle theme">&#128421;&#65039;</button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="page-header">
+        <div class="container stack fade-in">
+          <div>
+            <a href="/en-US/talk.html" style="text-decoration:none;font-size:var(--text-sm);color:var(--color-text-muted);">&larr; Go back</a>
+          </div>
+          <span class="badge">&#128101; Refer Someone</span>
+          <h1>Refer a friend or colleague</h1>
+          <p>You can request peer support for a friend or colleague. Anonymous referrals are also accepted.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container" style="max-width: 640px;">
+          <form class="card form-grid fade-in" data-validate>
+            <fieldset style="border:none;padding:0;margin:0;" class="form-grid">
+              <legend style="font-weight:700;font-size:var(--text-lg);margin-bottom:var(--space-3);">Your Information</legend>
+              <div class="form-group">
+                <label>Are you a Pegasus employee? *</label>
+                <div style="display:flex;gap:var(--space-4);padding-top:var(--space-2);">
+                  <label style="display:flex;align-items:center;gap:var(--space-2);font-weight:400;cursor:pointer;">
+                    <input type="radio" name="is_employee" value="yes" required style="width:auto;min-height:auto;" /> Yes
+                  </label>
+                  <label style="display:flex;align-items:center;gap:var(--space-2);font-weight:400;cursor:pointer;">
+                    <input type="radio" name="is_employee" value="no" style="width:auto;min-height:auto;" /> No
+                  </label>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="referrer-role">Your Role / Department *</label>
+                <select id="referrer-role" name="referrer_role" required>
+                  <option value="" disabled selected>Select role</option>
+                  <option value="flight-academy">Flight Academy</option>
+                  <option value="ame">Physicians (AME)</option>
+                  <option value="cockpit">Cockpit Crew</option>
+                  <option value="safety">Safety Department</option>
+                  <option value="flight-ops">Flight Operations Representative</option>
+                  <option value="hr">HR Representative</option>
+                </select>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="referrer-id">Employee ID</label>
+                  <input type="text" id="referrer-id" name="referrer_id" placeholder="Your employee ID" />
+                </div>
+                <div class="form-group">
+                  <label for="referrer-relation">Relationship</label>
+                  <input type="text" id="referrer-relation" name="referrer_relation" placeholder="e.g. Manager, colleague" />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="referrer-name">Full Name</label>
+                  <input type="text" id="referrer-name" name="referrer_name" placeholder="You can remain anonymous" />
+                </div>
+                <div class="form-group">
+                  <label for="referrer-phone">Phone</label>
+                  <input type="tel" id="referrer-phone" name="referrer_phone" placeholder="5XX XXX XX XX" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="referrer-email">Email</label>
+                <input type="email" id="referrer-email" name="referrer_email" placeholder="example@pegasus.com" />
+                <span class="form-hint">Leave your email if you'd like to receive updates about the process.</span>
+              </div>
+            </fieldset>
+
+            <hr class="divider" />
+
+            <fieldset style="border:none;padding:0;margin:0;" class="form-grid">
+              <legend style="font-weight:700;font-size:var(--text-lg);margin-bottom:var(--space-3);">Person You're Referring</legend>
+              <div class="form-group">
+                <label for="person-name">Person's Full Name *</label>
+                <input type="text" id="person-name" name="person_name" placeholder="Name of the person you're referring" required />
+              </div>
+              <div class="form-group">
+                <label for="person-email">Person's Email</label>
+                <input type="email" id="person-email" name="person_email" placeholder="person@pegasus.com" />
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="person-title">Title *</label>
+                  <select id="person-title" name="person_title" required>
+                    <option value="" disabled selected>Select title</option>
+                    <option value="student">Student Pilot (TRT)</option>
+                    <option value="captain">Captain</option>
+                    <option value="first-officer">First Officer</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="person-location">Location *</label>
+                  <select id="person-location" name="person_location" required>
+                    <option value="" disabled selected>Select location</option>
+                    <option value="SAW">SAW</option>
+                    <option value="ADB">ADB</option>
+                    <option value="AYT">AYT</option>
+                    <option value="ESB">ESB</option>
+                    <option value="ECN">ECN</option>
+                    <option value="ADA">ADA</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="person-urgency">Referral Urgency *</label>
+                  <select id="person-urgency" name="person_urgency" required>
+                    <option value="" disabled selected>Select urgency</option>
+                    <option value="high">High</option>
+                    <option value="medium">Medium</option>
+                    <option value="low">Low</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="person-topic">Support Topic</label>
+                  <select id="person-topic" name="person_topic">
+                    <option value="" disabled selected>Select topic</option>
+                    <option value="cirm">CIRM</option>
+                    <option value="fatigue">Fatigue &amp; Sleep Issues</option>
+                    <option value="chronic-illness">Chronic Illness</option>
+                    <option value="training">Training Related</option>
+                    <option value="substance">Substance Use</option>
+                    <option value="adaptation">Adaptation Issues</option>
+                    <option value="interpersonal">Interpersonal Communication</option>
+                    <option value="grief">Loss &amp; Grief</option>
+                    <option value="divorce">Divorce</option>
+                    <option value="stress">Stress Management</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="reason">Request Details</label>
+                <textarea id="reason" name="reason" rows="4" placeholder="Reason for referral and additional details..." required></textarea>
+              </div>
+            </fieldset>
+
+            <hr class="divider" />
+
+            <div class="form-group">
+              <label style="display:flex;align-items:start;gap:var(--space-2);font-weight:400;cursor:pointer;">
+                <input type="checkbox" name="terms" required style="width:auto;min-height:auto;margin-top:0.25rem;" />
+                <span>I have read and accept the PAPS Program Terms and Conditions. *</span>
+              </label>
+            </div>
+            <div class="form-group">
+              <label style="display:flex;align-items:start;gap:var(--space-2);font-weight:400;cursor:pointer;">
+                <input type="checkbox" name="privacy" required style="width:auto;min-height:auto;margin-top:0.25rem;" />
+                <span>I have read and approve the PAPS Privacy Notice. *</span>
+              </label>
+            </div>
+
+            <p class="form-hint">&#128274; All information will be kept confidential. The referred person will not know who referred them (unless you choose otherwise).</p>
+            <button class="btn btn-primary btn-lg" type="submit">Submit Referral</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-bottom">
+          <span>&copy; 2026 Pegasus Peer Support. All rights reserved.</span>
+        </div>
+      </div>
+    </footer>
+
+    <script src="/script.js"></script>
+  </body>
+</html>
