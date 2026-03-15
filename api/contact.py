@@ -1,17 +1,14 @@
-"""Vercel serverless function – contact form to email."""
+"""Vercel serverless function – contact form to email via Resend API."""
 
 import json
 import os
-import smtplib
 from datetime import datetime
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
 from http.server import BaseHTTPRequestHandler
+from urllib.request import Request, urlopen
+from urllib.error import URLError
 
-SMTP_HOST = os.environ.get("SMTP_HOST", "smtp.mail.yahoo.com")
-SMTP_PORT = int(os.environ.get("SMTP_PORT", "587"))
-SMTP_USER = os.environ.get("SMTP_USER", "ozyurts@yahoo.com")
-SMTP_PASS = os.environ.get("SMTP_PASS", "")
+RESEND_API_KEY = os.environ.get("RESEND_API_KEY", "")
+MAIL_FROM = os.environ.get("MAIL_FROM", "onboarding@resend.dev")
 MAIL_TO = os.environ.get("MAIL_TO", "ozyurts@yahoo.com")
 
 
@@ -67,16 +64,27 @@ def format_contact(data):
 
 
 def send_email(subject, html_body):
-    msg = MIMEMultipart("alternative")
-    msg["From"] = SMTP_USER
-    msg["To"] = MAIL_TO
-    msg["Subject"] = subject
-    msg.attach(MIMEText(html_body, "html", "utf-8"))
+    payload = json.dumps({
+        "from": MAIL_FROM,
+        "to": [MAIL_TO],
+        "subject": subject,
+        "html": html_body,
+    }).encode("utf-8")
 
-    with smtplib.SMTP(SMTP_HOST, SMTP_PORT, timeout=10) as server:
-        server.starttls()
-        server.login(SMTP_USER, SMTP_PASS)
-        server.sendmail(SMTP_USER, [MAIL_TO], msg.as_string())
+    req = Request(
+        "https://api.resend.com/emails",
+        data=payload,
+        headers={
+            "Authorization": f"Bearer {RESEND_API_KEY}",
+            "Content-Type": "application/json",
+        },
+        method="POST",
+    )
+
+    with urlopen(req, timeout=10) as resp:
+        result = json.loads(resp.read().decode("utf-8"))
+        if "id" not in result:
+            raise RuntimeError(f"Resend error: {result}")
 
 
 class handler(BaseHTTPRequestHandler):
@@ -88,8 +96,8 @@ class handler(BaseHTTPRequestHandler):
             self._respond(400, {"ok": False, "message": f"Invalid JSON: {exc}"})
             return
 
-        if not SMTP_PASS:
-            self._respond(500, {"ok": False, "message": "SMTP not configured"})
+        if not RESEND_API_KEY:
+            self._respond(500, {"ok": False, "message": "Email service not configured"})
             return
 
         try:
