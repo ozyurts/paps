@@ -9,6 +9,7 @@ import sys
 from datetime import datetime
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from http.server import ThreadingHTTPServer
 from pathlib import Path
 
 BASE_DIR = Path(__file__).parent
@@ -185,7 +186,7 @@ if __name__ == "__main__":
         print()
 
     os.chdir(BASE_DIR)
-    server = http.server.HTTPServer(("", PORT), FormHandler)
+    server = ThreadingHTTPServer(("0.0.0.0", PORT), FormHandler)
     print(f"Serving on http://localhost:{PORT}")
     print(f"Email target: {MAIL_TO}")
     try:
