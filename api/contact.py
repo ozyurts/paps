@@ -77,6 +77,7 @@ def send_email(subject, html_body):
         headers={
             "Authorization": f"Bearer {RESEND_API_KEY}",
             "Content-Type": "application/json",
+            "User-Agent": "PAPS-Contact/1.0",
         },
         method="POST",
     )
