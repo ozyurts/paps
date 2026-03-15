@@ -1,5 +1,7 @@
 {
   "rewrites": [
-    { "source": "/api/contact", "destination": "/api/contact" }
+    { "source": "/api/contact", "destination": "/api/contact" },
+    { "source": "/api/apply", "destination": "/api/apply" },
+    { "source": "/api/apply-other", "destination": "/api/apply-other" }
   ]
 }
