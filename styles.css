@@ -959,7 +959,7 @@ textarea:invalid:not(:placeholder-shown) {
   }
 
   .hero-visual {
-    order: -1;
+    order: 1;
   }
 
   .footer-grid {
