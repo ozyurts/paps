@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="tr-TR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Akranlarımız | Pegasus Peer Support</title>
+    <script>
+      (() => {
+        const s = localStorage.getItem('theme') || 'system';
+        const d = matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.dataset.theme = s === 'system' ? (d ? 'dark' : 'light') : s;
+      })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body data-locale="tr-TR">
+    <a class="skip-link" href="#main">İçeriğe geç</a>
+
+    <header class="site-header">
+      <div class="container nav-shell">
+        <a class="brand" href="/tr-TR/">
+          <span class="brand-mark">&#9992;</span>
+          <span class="brand-text"><strong>Pegasus</strong><small>Peer Support</small></span>
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu">&#9776;</button>
+        <nav class="nav-menu" id="navMenu" aria-label="Ana menü">
+          <ul class="nav-links">
+            <li><a class="nav-link" href="/tr-TR/">Ana Sayfa</a></li>
+            <li><a class="nav-link" href="/tr-TR/talk.html">Peer ile Konuş</a></li>
+            <li><a class="nav-link" href="/tr-TR/faq.html">S.S.S.</a></li>
+            <li><a class="nav-link" href="/tr-TR/contact.html">İletişim</a></li>
+            <li><a class="nav-link" href="/tr-TR/peers.html">Akranlarımız</a></li>
+          </ul>
+          <div class="nav-controls">
+            <select id="languageSwitcher" aria-label="Dil seçimi">
+              <option value="tr-TR">TR</option>
+              <option value="en-US">EN</option>
+            </select>
+            <button class="btn btn-ghost btn-icon" type="button" id="themeToggle" aria-label="Tema değiştir">&#128421;&#65039;</button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="page-header">
+        <div class="container stack fade-in">
+          <span class="badge">&#129309; Akranlarımız</span>
+          <h1>Eğitimli ve sertifikalı akranlarımız</h1>
+          <p>Akranlarımız, özel eğitim almış ve sertifikalandırılmış Pegasus çalışanlarıdır. Her biri gizlilik ve empati prensipleriyle hareket eder.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="grid grid-3 fade-in">
+
+            <article class="card card-hover peer-card">
+              <div class="peer-avatar"><img src="https://pegasuspeersupport.com/Images/tufan_alp.jpg" alt="Tufan A." /></div>
+              <div class="peer-name">Tufan A.</div>
+              <div class="peer-role">Grup Temsilcisi</div>
+              <div class="peer-tags">
+                <span class="chip">Kokpit</span>
+                <span class="chip">Stres Yönetimi</span>
+              </div>
+            </article>
+
+            <article class="card card-hover peer-card">
+              <div class="peer-avatar"><img src="https://pegasuspeersupport.com/Images/nihat_poyraz.jpg" alt="Nihat P." /></div>
+              <div class="peer-name">Nihat P.</div>
+              <div class="peer-role">Kaptan Pilot</div>
+              <div class="peer-tags">
+                <span class="chip">Kokpit</span>
+                <span class="chip">Empati Odaklı Liderlik</span>
+              </div>
+            </article>
+
+            <article class="card card-hover peer-card">
+              <div class="peer-avatar"><img src="https://pegasuspeersupport.com/Images/akin_ercan.jpg" alt="Akın E." /></div>
+              <div class="peer-name">Akın E.</div>
+              <div class="peer-role">Kaptan Pilot</div>
+              <div class="peer-tags">
+                <span class="chip">Kokpit</span>
+                <span class="chip">İş-Yaşam Dengesi</span>
+              </div>
+            </article>
+
+            <article class="card card-hover peer-card">
+              <div class="peer-avatar"><img src="https://pegasuspeersupport.com/Images/cihan_ulutas.jpg" alt="Cihan U." /></div>
+              <div class="peer-name">Cihan U.</div>
+              <div class="peer-role">Kaptan Pilot</div>
+              <div class="peer-tags">
+                <span class="chip">Kokpit</span>
+                <span class="chip">İnsan Kaynakları</span>
+              </div>
+            </article>
+
+            <article class="card card-hover peer-card">
+              <div class="peer-avatar"><img src="https://pegasuspeersupport.com/Images/guven_tuzer.jpg" alt="Güven T." /></div>
+              <div class="peer-name">Güven T.</div>
+              <div class="peer-role">Kaptan Pilot</div>
+              <div class="peer-tags">
+                <span class="chip">Kokpit</span>
+                <span class="chip">Peer Destek</span>
+              </div>
+            </article>
+
+            <article class="card card-hover peer-card">
+              <div class="peer-avatar"><img src="https://pegasuspeersupport.com/Images/ozcan_ozkardes.jpg" alt="Özcan Ö." /></div>
+              <div class="peer-name">Özcan Ö.</div>
+              <div class="peer-role">İkinci Pilot</div>
+              <div class="peer-tags">
+                <span class="chip">Kokpit</span>
+                <span class="chip">İnsan İlişkileri</span>
+              </div>
+            </article>
+
+            <article class="card card-hover peer-card">
+              <div class="peer-avatar"><img src="https://pegasuspeersupport.com/Images/omer_a.jpg" alt="Ömer A." /></div>
+              <div class="peer-name">Ömer A.</div>
+              <div class="peer-role">Kaptan Pilot</div>
+              <div class="peer-tags">
+                <span class="chip">Kokpit</span>
+                <span class="chip">Havacılık Psikolojisi</span>
+              </div>
+            </article>
+
+            <article class="card card-hover peer-card">
+              <div class="peer-avatar"><img src="https://pegasuspeersupport.com/Images/mehmet_yucel_ipek.jpg" alt="Mehmet Yücel İ." /></div>
+              <div class="peer-name">Mehmet Yücel İ.</div>
+              <div class="peer-role">Pilot</div>
+              <div class="peer-tags">
+                <span class="chip">Kokpit</span>
+                <span class="chip">Çözüm Odaklı</span>
+              </div>
+            </article>
+
+            <article class="card card-hover peer-card">
+              <div class="peer-avatar"><img src="https://pegasuspeersupport.com/Images/ahmet_bugra_y.jpg" alt="Ahmet Buğra Y." /></div>
+              <div class="peer-name">Ahmet Buğra Y.</div>
+              <div class="peer-role">Pilot</div>
+              <div class="peer-tags">
+                <span class="chip">Kokpit</span>
+                <span class="chip">Ekip Dayanışması</span>
+              </div>
+            </article>
+
+            <article class="card card-hover peer-card">
+              <div class="peer-avatar"><img src="https://pegasuspeersupport.com/Images/goksen_o.jpg" alt="Gökşen Ö." /></div>
+              <div class="peer-name">Gökşen Ö.</div>
+              <div class="peer-role">İkinci Pilot</div>
+              <div class="peer-tags">
+                <span class="chip">Kokpit</span>
+                <span class="chip">Pratik Destek</span>
+              </div>
+            </article>
+
+            <article class="card card-hover peer-card">
+              <div class="peer-avatar"><img src="https://pegasuspeersupport.com/Images/savas_b.jpg" alt="Savaş B." /></div>
+              <div class="peer-name">Savaş B.</div>
+              <div class="peer-role">Kaptan Pilot</div>
+              <div class="peer-tags">
+                <span class="chip">Kokpit</span>
+                <span class="chip">Stres Yönetimi</span>
+              </div>
+            </article>
+
+            <article class="card card-hover peer-card">
+              <div class="peer-avatar"><img src="https://pegasuspeersupport.com/Images/gizem_duygu_g.jpg" alt="Gizem Duygu G." /></div>
+              <div class="peer-name">Gizem Duygu G.</div>
+              <div class="peer-role">Kaptan Pilot</div>
+              <div class="peer-tags">
+                <span class="chip">Kokpit</span>
+                <span class="chip">Mental Dayanıklılık</span>
+              </div>
+            </article>
+
+            <article class="card card-hover peer-card">
+              <div class="peer-avatar"><img src="https://pegasuspeersupport.com/Images/ezgi_o.jpg" alt="Ezgi Ö." /></div>
+              <div class="peer-name">Ezgi Ö.</div>
+              <div class="peer-role">İkinci Pilot / SFI</div>
+              <div class="peer-tags">
+                <span class="chip">Kokpit</span>
+                <span class="chip">Empati &amp; CRM</span>
+              </div>
+            </article>
+
+            <article class="card card-hover peer-card">
+              <div class="peer-avatar"><img src="https://pegasuspeersupport.com/Images/tayfun_t.jpg" alt="Tayfun T." /></div>
+              <div class="peer-name">Tayfun T.</div>
+              <div class="peer-role">Kaptan Pilot</div>
+              <div class="peer-tags">
+                <span class="chip">Kokpit</span>
+                <span class="chip">Rehabilitasyon</span>
+              </div>
+            </article>
+
+            <article class="card card-hover peer-card">
+              <div class="peer-avatar"><img src="https://pegasuspeersupport.com/Images/cihan_a.jpg" alt="Cihan A." /></div>
+              <div class="peer-name">Cihan A.</div>
+              <div class="peer-role">Kaptan Pilot</div>
+              <div class="peer-tags">
+                <span class="chip">Kokpit</span>
+                <span class="chip">Güvenilir Destek</span>
+              </div>
+            </article>
+
+            <article class="card card-hover peer-card">
+              <div class="peer-avatar"><img src="https://pegasuspeersupport.com/Images/semih_s.jpg" alt="Semih S." /></div>
+              <div class="peer-name">Semih S.</div>
+              <div class="peer-role">Kaptan Pilot</div>
+              <div class="peer-tags">
+                <span class="chip">Kokpit</span>
+                <span class="chip">Mental Denge</span>
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </section>
+
+      <section class="section" style="background: var(--color-surface-alt);">
+        <div class="container text-center stack fade-in">
+          <h2>Sen de akran olmak ister misin?</h2>
+          <p style="margin-inline:auto;">Eğitimli bir akran olarak ekibe katılmak için bizimle iletişime geç.</p>
+          <div>
+            <a class="btn btn-primary btn-lg" href="/tr-TR/contact.html">Başvur</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-bottom">
+          <span>&copy; 2026 Pegasus Peer Support. Tüm hakları saklıdır.</span>
+        </div>
+      </div>
+    </footer>
+
+    <script src="/script.js"></script>
+  </body>
+</html>

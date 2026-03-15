@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="tr-TR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sıkça Sorulan Sorular | Pegasus Peer Support</title>
+    <script>
+      (() => {
+        const s = localStorage.getItem('theme') || 'system';
+        const d = matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.dataset.theme = s === 'system' ? (d ? 'dark' : 'light') : s;
+      })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body data-locale="tr-TR">
+    <a class="skip-link" href="#main">İçeriğe geç</a>
+
+    <header class="site-header">
+      <div class="container nav-shell">
+        <a class="brand" href="/tr-TR/">
+          <span class="brand-mark">&#9992;</span>
+          <span class="brand-text"><strong>Pegasus</strong><small>Peer Support</small></span>
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu">&#9776;</button>
+        <nav class="nav-menu" id="navMenu" aria-label="Ana menü">
+          <ul class="nav-links">
+            <li><a class="nav-link" href="/tr-TR/">Ana Sayfa</a></li>
+            <li><a class="nav-link" href="/tr-TR/talk.html">Peer ile Konuş</a></li>
+            <li><a class="nav-link" href="/tr-TR/faq.html">S.S.S.</a></li>
+            <li><a class="nav-link" href="/tr-TR/contact.html">İletişim</a></li>
+            <li><a class="nav-link" href="/tr-TR/peers.html">Akranlarımız</a></li>
+          </ul>
+          <div class="nav-controls">
+            <select id="languageSwitcher" aria-label="Dil seçimi">
+              <option value="tr-TR">TR</option>
+              <option value="en-US">EN</option>
+            </select>
+            <button class="btn btn-ghost btn-icon" type="button" id="themeToggle" aria-label="Tema değiştir">&#128421;&#65039;</button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="page-header">
+        <div class="container stack fade-in">
+          <span class="badge">&#10067; Sıkça Sorulan Sorular</span>
+          <h1>Merak ettiklerini yanıtlıyoruz</h1>
+          <p>Peer Support programı hakkında en sık sorulan soruları aşağıda bulabilirsin.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container" style="max-width: 760px;">
+          <div class="accordion fade-in">
+
+            <div class="accordion-item open">
+              <button class="accordion-trigger" aria-expanded="true">
+                <span>Peer Support nedir?</span>
+                <span class="accordion-icon">&#9660;</span>
+              </button>
+              <div class="accordion-body">
+                <p>Peer Support (Akran Desteği), eğitimli çalışanların meslektaşlarına gizli ve güvenli bir ortamda destek sunduğu bir programdır. Profesyonel terapi yerine geçmez, ancak ilk destek ve yönlendirme açısından çok değerli bir kaynaktır.</p>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-trigger" aria-expanded="false">
+                <span>Görüşmeler gizli mi?</span>
+                <span class="accordion-icon">&#9660;</span>
+              </button>
+              <div class="accordion-body">
+                <p>Evet, tüm görüşmeler %100 gizlilik prensibi ile gerçekleştirilir. Akranlar, görüşme içeriklerini yöneticiler veya üçüncü taraflarla paylaşmaz. Sadece ciddi güvenlik tehditleri gibi yasal zorunluluklarda sınırlı istisnalar uygulanabilir.</p>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-trigger" aria-expanded="false">
+                <span>Kimler başvurabilir?</span>
+                <span class="accordion-icon">&#9660;</span>
+              </button>
+              <div class="accordion-body">
+                <p>Tüm Pegasus çalışanları (kokpit, kabin, teknik, ofis vb.) programa başvurabilir. Kendin için başvurabileceğin gibi, bir arkadaşın için de isimsiz yönlendirme yapabilirsin.</p>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-trigger" aria-expanded="false">
+                <span>Başvuru sürecim ne kadar sürer?</span>
+                <span class="accordion-icon">&#9660;</span>
+              </button>
+              <div class="accordion-body">
+                <p>Başvurunuz alındıktan sonra genellikle 24-48 saat içinde uygun bir akran ile eşleştirilirsiniz. Acil durumlarda süreç hızlandırılabilir.</p>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-trigger" aria-expanded="false">
+                <span>Akranlar profesyonel psikolog mu?</span>
+                <span class="accordion-icon">&#9660;</span>
+              </button>
+              <div class="accordion-body">
+                <p>Akranlar profesyonel psikolog veya terapist değildir, ancak özel eğitim almış ve sertifikalandırılmış çalışanlardır. İhtiyaç durumunda sizi profesyonel destek kaynaklarına yönlendirebilirler.</p>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-trigger" aria-expanded="false">
+                <span>Hangi konularda destek alabilirim?</span>
+                <span class="accordion-icon">&#9660;</span>
+              </button>
+              <div class="accordion-body">
+                <p>İş stresi, tükenmişlik, kişisel zorluklar, yas, iş-yaşam dengesi, ekip içi iletişim sorunları ve benzeri birçok konuda destek alabilirsin. Akranlar yargılamadan dinler ve seninle birlikte çözüm yolları arar.</p>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-trigger" aria-expanded="false">
+                <span>Program ücretsiz mi?</span>
+                <span class="accordion-icon">&#9660;</span>
+              </button>
+              <div class="accordion-body">
+                <p>Evet, Peer Support programı tüm Pegasus çalışanları için tamamen ücretsizdir.</p>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-trigger" aria-expanded="false">
+                <span>Yöneticim başvurduğumu bilecek mi?</span>
+                <span class="accordion-icon">&#9660;</span>
+              </button>
+              <div class="accordion-body">
+                <p>Hayır. Başvurunuz ve görüşme içeriğiniz tamamen gizli tutulur. Yöneticiniz, İK departmanı veya herhangi bir üçüncü taraf bilgilendirilmez.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <section class="section" style="background: var(--color-surface-alt);">
+        <div class="container text-center stack fade-in">
+          <h2>Sorun yanıtlanmadı mı?</h2>
+          <p style="margin-inline:auto;">Bize doğrudan yazabilirsin, en kısa sürede yanıtlayacağız.</p>
+          <div>
+            <a class="btn btn-primary btn-lg" href="/tr-TR/contact.html">İletişime Geç</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-bottom">
+          <span>&copy; 2026 Pegasus Peer Support. Tüm hakları saklıdır.</span>
+        </div>
+      </div>
+    </footer>
+
+    <script src="/script.js"></script>
+  </body>
+</html>

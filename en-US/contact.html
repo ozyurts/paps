@@ -1,1 +1,127 @@
-<!doctype html><html lang="en-US"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Contact | Pegasus Peer Support</title><script>(()=>{const s=localStorage.getItem('theme')||'system',d=matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.dataset.theme=s==='system'?(d?'dark':'light'):s;})();</script><link rel="stylesheet" href="/styles.css"/></head><body data-locale="en-US"><a class="skip-link" href="#main">Skip to content</a><header class="site-header"><div class="container nav-shell"><a class="brand" href="/en-US/"><span class="brand-mark">✈</span><span><strong>Pegasus</strong><small>Peer Support</small></span></a><button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu">☰</button><nav class="nav-menu" id="navMenu"><ul class="nav-links"><li><a class="nav-link" href="/en-US/">Home</a></li><li><a class="nav-link" href="/en-US/program.html">Program</a></li><li><a class="nav-link" href="/en-US/resources.html">Resources</a></li><li><a class="nav-link" href="/en-US/contact.html">Contact</a></li></ul><div class="nav-controls"><select id="languageSwitcher"><option value="tr-TR">TR</option><option value="en-US">EN</option></select><button class="btn btn-ghost" id="themeToggle" type="button">🖥️</button></div></nav></div></header><main id="main" class="section"><div class="container stack"><span class="badge">Contact</span><h1>Let's discuss your support model</h1><p>We can design a setup that integrates with your current processes without disruption.</p><form class="card form-grid" data-validate data-form-type="contact"><label>Full name<input name="name" required/></label><label>Email<input type="email" name="email" required/></label><label>Message<textarea name="message" rows="5" required></textarea></label><button class="btn btn-primary" type="submit">Send</button></form></div></main><footer class="site-footer"><div class="container">© 2026 Pegasus Peer Support.</div></footer><script src="/script.js"></script></body></html>
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact | Pegasus Peer Support</title>
+    <script>
+      (() => {
+        const s = localStorage.getItem('theme') || 'system';
+        const d = matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.dataset.theme = s === 'system' ? (d ? 'dark' : 'light') : s;
+      })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body data-locale="en-US">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="container nav-shell">
+        <a class="brand" href="/en-US/">
+          <span class="brand-mark">&#9992;</span>
+          <span class="brand-text"><strong>Pegasus</strong><small>Peer Support</small></span>
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu">&#9776;</button>
+        <nav class="nav-menu" id="navMenu" aria-label="Main navigation">
+          <ul class="nav-links">
+            <li><a class="nav-link" href="/en-US/">Home</a></li>
+            <li><a class="nav-link" href="/en-US/talk.html">Talk to a Peer</a></li>
+            <li><a class="nav-link" href="/en-US/faq.html">FAQ</a></li>
+            <li><a class="nav-link" href="/en-US/contact.html">Contact</a></li>
+            <li><a class="nav-link" href="/en-US/peers.html">Our Peers</a></li>
+          </ul>
+          <div class="nav-controls">
+            <select id="languageSwitcher" aria-label="Language">
+              <option value="tr-TR">TR</option>
+              <option value="en-US">EN</option>
+            </select>
+            <button class="btn btn-ghost btn-icon" type="button" id="themeToggle" aria-label="Toggle theme">&#128421;&#65039;</button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="page-header">
+        <div class="container stack fade-in">
+          <span class="badge">&#128231; Contact</span>
+          <h1>Get in touch with us</h1>
+          <p>For questions, suggestions, or information about the program, please reach out to us.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="grid" style="grid-template-columns: 1fr 1fr; gap: var(--space-7); align-items: start;">
+            <form class="card form-grid fade-in" data-validate data-form-type="contact">
+              <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="Your full name" required />
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="example@pegasus.com" required />
+              </div>
+              <div class="form-group">
+                <label for="subject">Subject</label>
+                <select id="subject" name="subject">
+                  <option value="" disabled selected>Select a subject</option>
+                  <option value="general">General Information</option>
+                  <option value="status">Application Status</option>
+                  <option value="become-peer">I Want to Become a Peer</option>
+                  <option value="feedback">Suggestion / Feedback</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" placeholder="Type your message here..." required></textarea>
+              </div>
+              <button class="btn btn-primary btn-lg" type="submit">Send</button>
+            </form>
+
+            <div class="stack fade-in">
+              <div class="card stack">
+                <h3>Other Contact Channels</h3>
+                <div class="stack-sm">
+                  <div>
+                    <strong style="font-size:var(--text-sm);">Email</strong>
+                    <p>peersupport@flypgs.com</p>
+                  </div>
+                  <hr class="divider" />
+                  <div>
+                    <strong style="font-size:var(--text-sm);">Working Hours</strong>
+                    <p>24/7 accessible support</p>
+                  </div>
+                  <hr class="divider" />
+                  <div>
+                    <strong style="font-size:var(--text-sm);">Location</strong>
+                    <p>Pegasus Airlines Headquarters, Istanbul</p>
+                  </div>
+                </div>
+              </div>
+              <div class="card stack-sm" style="background: rgb(226 31 38 / 0.04); border-color: rgb(226 31 38 / 0.15);">
+                <h4 style="color: var(--brand-primary);">Emergency</h4>
+                <p>If you are facing an emergency, please call 112 or your nearest healthcare facility.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-bottom">
+          <span>&copy; 2026 Pegasus Peer Support. All rights reserved.</span>
+        </div>
+      </div>
+    </footer>
+
+    <script src="/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="tr-TR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Başkası İçin Yönlendirme | Pegasus Peer Support</title>
+    <script>
+      (() => {
+        const s = localStorage.getItem('theme') || 'system';
+        const d = matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.dataset.theme = s === 'system' ? (d ? 'dark' : 'light') : s;
+      })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body data-locale="tr-TR">
+    <a class="skip-link" href="#main">İçeriğe geç</a>
+
+    <header class="site-header">
+      <div class="container nav-shell">
+        <a class="brand" href="/tr-TR/">
+          <span class="brand-mark">&#9992;</span>
+          <span class="brand-text"><strong>Pegasus</strong><small>Peer Support</small></span>
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu">&#9776;</button>
+        <nav class="nav-menu" id="navMenu" aria-label="Ana menü">
+          <ul class="nav-links">
+            <li><a class="nav-link" href="/tr-TR/">Ana Sayfa</a></li>
+            <li><a class="nav-link" href="/tr-TR/talk.html">Peer ile Konuş</a></li>
+            <li><a class="nav-link" href="/tr-TR/faq.html">S.S.S.</a></li>
+            <li><a class="nav-link" href="/tr-TR/contact.html">İletişim</a></li>
+            <li><a class="nav-link" href="/tr-TR/peers.html">Akranlarımız</a></li>
+          </ul>
+          <div class="nav-controls">
+            <select id="languageSwitcher" aria-label="Dil seçimi">
+              <option value="tr-TR">TR</option>
+              <option value="en-US">EN</option>
+            </select>
+            <button class="btn btn-ghost btn-icon" type="button" id="themeToggle" aria-label="Tema değiştir">&#128421;&#65039;</button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="page-header">
+        <div class="container stack fade-in">
+          <div>
+            <a href="/tr-TR/talk.html" style="text-decoration:none;font-size:var(--text-sm);color:var(--color-text-muted);">&larr; Geri dön</a>
+          </div>
+          <span class="badge">&#128101; Başkası İçin Yönlendirme</span>
+          <h1>Bir arkadaşın için yönlendirme yap</h1>
+          <p>Bir arkadaşın veya meslektaşın için peer desteği talep edebilirsin. İsimsiz olarak da başvurabilirsin.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container" style="max-width: 640px;">
+          <form class="card form-grid fade-in" data-validate data-form-type="apply-other">
+            <fieldset style="border:none;padding:0;margin:0;" class="form-grid">
+              <legend style="font-weight:700;font-size:var(--text-lg);margin-bottom:var(--space-3);">Senin Bilgilerin</legend>
+              <div class="form-group">
+                <label>Pegasus Çalışanı mısınız? *</label>
+                <div style="display:flex;gap:var(--space-4);padding-top:var(--space-2);">
+                  <label style="display:flex;align-items:center;gap:var(--space-2);font-weight:400;cursor:pointer;">
+                    <input type="radio" name="is_employee" value="evet" required style="width:auto;min-height:auto;" /> Evet
+                  </label>
+                  <label style="display:flex;align-items:center;gap:var(--space-2);font-weight:400;cursor:pointer;">
+                    <input type="radio" name="is_employee" value="hayir" style="width:auto;min-height:auto;" /> Hayır
+                  </label>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="referrer-role">Göreviniz / Departmanınız *</label>
+                <select id="referrer-role" name="referrer_role" required>
+                  <option value="" disabled selected>Görev seçin</option>
+                  <option value="ucus-akademi">Uçuş Akademi</option>
+                  <option value="hekimler">Hekimler (AME)</option>
+                  <option value="kokpit">Kokpit Ekibi</option>
+                  <option value="emniyet">Emniyet Departmanı</option>
+                  <option value="ucus-isletme">Uçuş İşletme Temsilcisi</option>
+                  <option value="ik">İK Temsilcisi</option>
+                </select>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="referrer-sicil">Sicil No</label>
+                  <input type="text" id="referrer-sicil" name="referrer_sicil" placeholder="Sicil numaranız" />
+                </div>
+                <div class="form-group">
+                  <label for="referrer-relation">Yakınlık Durumu</label>
+                  <input type="text" id="referrer-relation" name="referrer_relation" placeholder="Örn: Yöneticisi, arkadaşı" />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="referrer-name">Ad Soyad</label>
+                  <input type="text" id="referrer-name" name="referrer_name" placeholder="İsimsiz kalabilirsin" />
+                </div>
+                <div class="form-group">
+                  <label for="referrer-phone">Telefon</label>
+                  <input type="tel" id="referrer-phone" name="referrer_phone" placeholder="5XX XXX XX XX" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="referrer-email">E-posta</label>
+                <input type="email" id="referrer-email" name="referrer_email" placeholder="ornek@pegasus.com" />
+                <span class="form-hint">Süreç hakkında bilgi almak istersen e-postanı bırak.</span>
+              </div>
+            </fieldset>
+
+            <hr class="divider" />
+
+            <fieldset style="border:none;padding:0;margin:0;" class="form-grid">
+              <legend style="font-weight:700;font-size:var(--text-lg);margin-bottom:var(--space-3);">Yönlendirdiğin Kişi</legend>
+              <div class="form-group">
+                <label for="person-name">Kişinin Adı Soyadı *</label>
+                <input type="text" id="person-name" name="person_name" placeholder="Yönlendirdiğin kişinin adı" required />
+              </div>
+              <div class="form-group">
+                <label for="person-email">Kişinin E-posta Adresi</label>
+                <input type="email" id="person-email" name="person_email" placeholder="kisi@pegasus.com" />
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="person-title">Ünvanı *</label>
+                  <select id="person-title" name="person_title" required>
+                    <option value="" disabled selected>Ünvan seçin</option>
+                    <option value="ogrenci">Öğrenci Pilot (TRT)</option>
+                    <option value="kaptan">Kaptan</option>
+                    <option value="ikinci-pilot">İkinci Pilot</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="person-location">Lokasyon *</label>
+                  <select id="person-location" name="person_location" required>
+                    <option value="" disabled selected>Lokasyon seçin</option>
+                    <option value="SAW">SAW</option>
+                    <option value="ADB">ADB</option>
+                    <option value="AYT">AYT</option>
+                    <option value="ESB">ESB</option>
+                    <option value="ECN">ECN</option>
+                    <option value="ADA">ADA</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="person-urgency">Yönlendirme Aciliyeti *</label>
+                  <select id="person-urgency" name="person_urgency" required>
+                    <option value="" disabled selected>Aciliyet seçin</option>
+                    <option value="yuksek">Yüksek</option>
+                    <option value="orta">Orta</option>
+                    <option value="dusuk">Düşük</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="person-topic">Destek Konusu</label>
+                  <select id="person-topic" name="person_topic">
+                    <option value="" disabled selected>Konu seçin</option>
+                    <option value="cirm">CIRM</option>
+                    <option value="fatigue">Fatigue ve Uyku Problemi</option>
+                    <option value="kronik-hastalik">Kronik Hastalık</option>
+                    <option value="egitim">Eğitim İle İlgili Konular</option>
+                    <option value="madde-kullanimi">Madde Kullanımı</option>
+                    <option value="uyum-problemi">Uyum Problemi</option>
+                    <option value="kisilerarasi-iletisim">Kişilerarası İletişim</option>
+                    <option value="kayip-yas">Kayıp ve Yas</option>
+                    <option value="bosanma">Boşanma</option>
+                    <option value="stres-yonetimi">Stres Yönetimi</option>
+                    <option value="diger">Diğer</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="reason">Talep Detayları</label>
+                <textarea id="reason" name="reason" rows="4" placeholder="Yönlendirme sebebi ve ek detaylar..." required></textarea>
+              </div>
+            </fieldset>
+
+            <hr class="divider" />
+
+            <div class="form-group">
+              <label style="display:flex;align-items:start;gap:var(--space-2);font-weight:400;cursor:pointer;">
+                <input type="checkbox" name="terms" required style="width:auto;min-height:auto;margin-top:0.25rem;" />
+                <span>PAPS Programı Genel Kuralları ve Koşullarını okudum, kabul ediyorum. *</span>
+              </label>
+            </div>
+            <div class="form-group">
+              <label style="display:flex;align-items:start;gap:var(--space-2);font-weight:400;cursor:pointer;">
+                <input type="checkbox" name="privacy" required style="width:auto;min-height:auto;margin-top:0.25rem;" />
+                <span>PAPS Programı Aydınlatma Metnini okudum, onaylıyorum. *</span>
+              </label>
+            </div>
+
+            <p class="form-hint">&#128274; Tüm bilgiler gizli tutulacaktır. Yönlendirdiğin kişi, senin yönlendirdiğini bilmeyecektir (isterseniz).</p>
+            <button class="btn btn-primary btn-lg" type="submit">Yönlendirmeyi Gönder</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-bottom">
+          <span>&copy; 2026 Pegasus Peer Support. Tüm hakları saklıdır.</span>
+        </div>
+      </div>
+    </footer>
+
+    <script src="/script.js"></script>
+  </body>
+</html>
