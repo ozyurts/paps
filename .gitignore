@@ -1,0 +1,5 @@
+.env
+smtp_secret.key
+smtp_pass.enc
+__pycache__/
+*.pyc
