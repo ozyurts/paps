@@ -5,7 +5,7 @@ import os
 from datetime import datetime
 from http.server import BaseHTTPRequestHandler
 from urllib.request import Request, urlopen
-from urllib.error import URLError
+from urllib.error import HTTPError, URLError
 
 RESEND_API_KEY = os.environ.get("RESEND_API_KEY", "")
 MAIL_FROM = os.environ.get("MAIL_FROM", "onboarding@resend.dev")
@@ -81,10 +81,14 @@ def send_email(subject, html_body):
         method="POST",
     )
 
-    with urlopen(req, timeout=10) as resp:
-        result = json.loads(resp.read().decode("utf-8"))
-        if "id" not in result:
-            raise RuntimeError(f"Resend error: {result}")
+    try:
+        with urlopen(req, timeout=10) as resp:
+            result = json.loads(resp.read().decode("utf-8"))
+            if "id" not in result:
+                raise RuntimeError(f"Resend error: {result}")
+    except HTTPError as exc:
+        body = exc.read().decode("utf-8", errors="replace")
+        raise RuntimeError(f"Resend HTTP {exc.code}: {body}") from exc
 
 
 class handler(BaseHTTPRequestHandler):
