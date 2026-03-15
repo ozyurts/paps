@@ -9,13 +9,36 @@ import sys
 from datetime import datetime
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from http.server import ThreadingHTTPServer
 from pathlib import Path
+
+BASE_DIR = Path(__file__).parent
+
+
+# ── Encrypted password loading ──────────────────────────────────────────────
+
+def _load_smtp_pass() -> str:
+    """Load SMTP password: encrypted file first, then env var fallback."""
+    key_file = BASE_DIR / "smtp_secret.key"
+    enc_file = BASE_DIR / "smtp_pass.enc"
+
+    if key_file.exists() and enc_file.exists():
+        try:
+            from cryptography.fernet import Fernet
+            key = key_file.read_bytes()
+            token = enc_file.read_bytes()
+            return Fernet(key).decrypt(token).decode("utf-8")
+        except Exception as exc:
+            print(f"WARNING: Failed to decrypt smtp_pass.enc: {exc}", file=sys.stderr)
+
+    return os.environ.get("SMTP_PASS", "")
+
 
 # ── Configuration (override via environment variables) ──────────────────────
 SMTP_HOST = os.environ.get("SMTP_HOST", "smtp.mail.yahoo.com")
 SMTP_PORT = int(os.environ.get("SMTP_PORT", "587"))
 SMTP_USER = os.environ.get("SMTP_USER", "ozyurts@yahoo.com")
-SMTP_PASS = os.environ.get("SMTP_PASS", "")
+SMTP_PASS = _load_smtp_pass()
 MAIL_TO = os.environ.get("MAIL_TO", "ozyurts@yahoo.com")
 PORT = int(os.environ.get("PORT", "3000"))
 
@@ -64,7 +87,7 @@ def _wrap_html(title, badge_text, badge_color, rows_html, footer_note=""):
 def format_contact(data):
     subject_label = data.get("subject_label", data.get("subject", ""))
     name = data.get("name", "Belirtilmedi")
-    subject = f"PAPS İletişim: {subject_label} – {name}"
+    subject = f"PAPS İletişim: {subject_label} – {name}" if subject_label else f"PAPS İletişim: {name}"
 
     rows = (
         _row("Ad Soyad", data.get("name"))
@@ -76,100 +99,8 @@ def format_contact(data):
     return subject, html
 
 
-def format_apply(data):
-    name = data.get("name", "İsimsiz")
-    urgency = data.get("urgency_label", data.get("urgency", ""))
-    topic = data.get("topic_label", data.get("topic", ""))
-    peer = data.get("peer_label", data.get("peer", ""))
-
-    subject = f"PAPS Başvuru: {name}"
-    parts = []
-    if urgency:
-        parts.append(urgency)
-    if topic:
-        parts.append(topic)
-    if parts:
-        subject += " | " + " – ".join(parts)
-
-    rows = (
-        _row("Ad Soyad", data.get("name"))
-        + _row("Ünvan", data.get("title_label", data.get("title", "")))
-        + _row("Lokasyon", data.get("location"))
-        + _row("E-posta", data.get("email"))
-        + _row("Telefon", data.get("phone"))
-        + _row("Aciliyet", urgency)
-        + _row("Görüşme Konusu", topic)
-        + _row("Peer Seçimi", peer if peer else "Farketmez")
-        + _row("Detaylar", data.get("message", "").replace("\n", "<br>"))
-    )
-    badge_color = {"yuksek": "#dc2626", "high": "#dc2626",
-                   "orta": "#f59e0b", "medium": "#f59e0b"}.get(
-        data.get("urgency", "").lower(), "#22c55e"
-    )
-    html = _wrap_html("Yeni Peer Destek Başvurusu", f"Aciliyet: {urgency}", badge_color, rows,
-                       "Başvuru sahibi PAPS koşullarını ve aydınlatma metnini kabul etmiştir.")
-    return subject, html
-
-
-def format_apply_other(data):
-    person_name = data.get("person_name", "Belirtilmedi")
-    urgency = data.get("person_urgency_label", data.get("person_urgency", ""))
-    topic = data.get("person_topic_label", data.get("person_topic", ""))
-
-    subject = f"PAPS Yönlendirme: {person_name}"
-    parts = []
-    if urgency:
-        parts.append(urgency)
-    if topic:
-        parts.append(topic)
-    if parts:
-        subject += " | " + " – ".join(parts)
-
-    referrer_rows = (
-        _row("Pegasus Çalışanı mı?", data.get("is_employee_label", data.get("is_employee", "")))
-        + _row("Görev / Departman", data.get("referrer_role_label", data.get("referrer_role", "")))
-        + _row("Sicil No", data.get("referrer_sicil", data.get("referrer_id", "")))
-        + _row("Yakınlık Durumu", data.get("referrer_relation"))
-        + _row("Ad Soyad", data.get("referrer_name", "İsimsiz"))
-        + _row("Telefon", data.get("referrer_phone"))
-        + _row("E-posta", data.get("referrer_email"))
-    )
-
-    person_rows = (
-        _row("Ad Soyad", person_name)
-        + _row("E-posta", data.get("person_email"))
-        + _row("Ünvan", data.get("person_title_label", data.get("person_title", "")))
-        + _row("Lokasyon", data.get("person_location"))
-        + _row("Aciliyet", urgency)
-        + _row("Destek Konusu", topic)
-        + _row("Detaylar", data.get("reason", "").replace("\n", "<br>"))
-    )
-
-    section_header = (
-        '<tr><td colspan="2" style="padding:16px 12px 8px;font-weight:700;'
-        'font-size:15px;color:#1a1a2e;border-bottom:2px solid #e21f26;">{}</td></tr>'
-    )
-
-    rows = (
-        section_header.format("Yönlendiren Kişi")
-        + referrer_rows
-        + section_header.format("Yönlendirilen Kişi")
-        + person_rows
-    )
-
-    badge_color = {"yuksek": "#dc2626", "high": "#dc2626",
-                   "orta": "#f59e0b", "medium": "#f59e0b"}.get(
-        data.get("person_urgency", "").lower(), "#22c55e"
-    )
-    html = _wrap_html("Yeni Yönlendirme Başvurusu", f"Aciliyet: {urgency}", badge_color, rows,
-                       "Yönlendiren kişi PAPS koşullarını ve aydınlatma metnini kabul etmiştir.")
-    return subject, html
-
-
 FORMATTERS = {
     "contact": format_contact,
-    "apply": format_apply,
-    "apply-other": format_apply_other,
 }
 
 
@@ -199,7 +130,6 @@ def send_email(subject, html_body):
 
 class FormHandler(http.server.SimpleHTTPRequestHandler):
     def do_POST(self):
-        # /api/contact | /api/apply | /api/apply-other
         form_type = self.path.replace("/api/", "", 1)
         formatter = FORMATTERS.get(form_type)
         if not formatter:
@@ -242,7 +172,7 @@ class FormHandler(http.server.SimpleHTTPRequestHandler):
     def log_message(self, fmt, *args):
         msg = fmt % args
         if "GET" in msg and any(msg.endswith(ext) for ext in (".css", ".js", ".png", ".jpg", ".ico")):
-            return  # suppress static asset logs
+            return
         safe = msg.encode("ascii", "replace").decode("ascii")
         print(f"[{datetime.now().strftime('%H:%M:%S')}] {safe}")
 
@@ -251,12 +181,12 @@ class FormHandler(http.server.SimpleHTTPRequestHandler):
 
 if __name__ == "__main__":
     if not SMTP_PASS:
-        print("WARNING: SMTP_PASS not set. Email sending will fail.")
-        print("Set it via: export SMTP_PASS='your-yahoo-app-password'")
+        print("WARNING: SMTP password not configured. Emails will be logged only.")
+        print("Run 'python manage_secrets.py setup' to encrypt and store your password.")
         print()
 
-    os.chdir(Path(__file__).parent)
-    server = http.server.HTTPServer(("", PORT), FormHandler)
+    os.chdir(BASE_DIR)
+    server = ThreadingHTTPServer(("0.0.0.0", PORT), FormHandler)
     print(f"Serving on http://localhost:{PORT}")
     print(f"Email target: {MAIL_TO}")
     try:
